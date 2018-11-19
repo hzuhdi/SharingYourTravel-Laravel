@@ -14,3 +14,7 @@
 Route::get('/', "myController@index");
 
 Route::get('about', "myController@about");
+
+Route::get('contact', "myController@contact");
+
+Route::get('home', "myController@index");
