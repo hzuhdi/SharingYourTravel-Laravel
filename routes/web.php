@@ -12,3 +12,5 @@
 */
 
 Route::get('/', "myController@index");
+
+Route::get('about', "myController@about");
