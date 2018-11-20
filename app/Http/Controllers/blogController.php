@@ -48,6 +48,8 @@ class blogController extends Controller
      $b->content = $request['content'];
      $b->image = $request['image'];
      $b->countries = $request['countries'];
+     $b->author = Auth::user();
+     // TODO handle exception when no auth
      $b->save();
 
      return redirect()->to('/');

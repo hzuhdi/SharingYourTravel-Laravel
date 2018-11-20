@@ -19,6 +19,7 @@ class CreateBlogsTable extends Migration
             $table->text('content');
             $table->binary('image')->nullable();
             $table->enum('countries', ['South America', 'North America', 'Europe', 'Middle East', 'Asia']);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -27,6 +27,8 @@
                 <b>Posts</b>:
             </div>
             <div class="col-md-9">
+                <span class="text-danger py-sm">Oh nooooo... you don't have any blog post <i class="fa fa-frown-o"></i></span><br />
+                <a class="btn btn-outline-danger" href="/add">click here to share your travel story</a>
                 {{-- TODO show user posts here --}}
             </div>
         </div>

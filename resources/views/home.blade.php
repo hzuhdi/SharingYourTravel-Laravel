@@ -15,7 +15,7 @@
             <div class="row">
 
         @foreach($blogs as $b)
-        
+
               <div class="col-md-4">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
                   <img src="images/img_5.jpg" alt="Image placeholder">
@@ -48,7 +48,7 @@
         @else
         <p>There is no post</p>
 
- 
-@endif    
+
+@endif
 
 @stop
