@@ -19,7 +19,7 @@ Route::get('about', "myController@about");
 
 Route::get('contact', "myController@contact");
 
-Route::get('home', "myController@index");
+// Route::get('home', "myController@index");
 
 Route::get('/add', "myController@add");
 
@@ -42,6 +42,8 @@ Dolorum blanditiis illum quo quaerat, possimus praesentium perferendis! Quod aut
 Route::post('/store', "blogController@store");
 
 Auth::routes();
-//
-// Route::get('/home', 'HomeController@index')->name('home');
+
+
+// UserController routes (auth middleware, so can't access if you're not logged)
 Route::get('/logout', 'UserController@logout');
+Route::get('/profile', 'UserController@showAuthenticatedUser');

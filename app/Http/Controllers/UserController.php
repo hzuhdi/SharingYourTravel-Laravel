@@ -18,4 +18,9 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->action('myController@index');
     }
+
+    public function showAuthenticatedUser(){
+        $current_user = Auth::user();
+        return view('user.profile')->with('user', $current_user);
+    }
 }
