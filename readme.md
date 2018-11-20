@@ -18,3 +18,6 @@
 type  ```php artisan serve``` <br/>
 the webserver is now running in development mode on the port 8000 of your local machine!<br>
 [Try accessing the Home page](http://127.0.0.1:8000/)
+
+### useful commands
+- ```php artisan migrate:fresh --seed``` will create the database schema, and populate it with random data
