@@ -11,12 +11,12 @@
           </div>
         </div>
         <div class="row blog-entries">
-          <div class="col-md-12 col-lg-8 main-content">
+          <div class="col-md-12 col-lg-12 main-content">
             <div class="row">
 
         @foreach($blogs as $b)
         
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
                   <img src="images/img_5.jpg" alt="Image placeholder">
                   <div class="blog-content-body">
@@ -26,7 +26,7 @@
                       <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                     </div>
                     <h2>{{$b->title}}</h2>
-                    <p>{{$b->content}}</p>
+                    <p>{!!substr($b->content,0,50)!!}...</p>
                   </div>
                 </a>
               </div>
@@ -38,6 +38,12 @@
 </div>
 </div>
 </section>
+
+<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
 
         @else
         <p>There is no post</p>

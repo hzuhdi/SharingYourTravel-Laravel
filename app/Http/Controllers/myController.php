@@ -15,8 +15,9 @@ class myController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::all();
-        return view('home', compact('blogs'));
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(10);
+        return view('home')->with('blogs', $blogs);
+        //return view('home', compact('blogs'));
 
     }
 
