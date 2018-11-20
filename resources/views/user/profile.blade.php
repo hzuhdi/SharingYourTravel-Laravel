@@ -2,7 +2,6 @@
 @section('content')
 
 {{-- TODO better CSS --}}
-{{-- TODO add properties on my user  --}}
 
 <section class='site-section py-sm'>
     <div class="container">

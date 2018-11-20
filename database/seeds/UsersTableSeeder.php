@@ -12,6 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 3)->create();
+        // create a single user so we can use it to log
+        factory(User::class)->create([
+            'username' => 'Bob',
+            'password' => bcrypt('password')
+        ]);
+        // create other users to populate the db
+        factory(User::class, 4)->create();
     }
 }
