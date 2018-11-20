@@ -21,6 +21,8 @@ Route::get('contact', "myController@contact");
 
 Route::get('home', "myController@index");
 
+Route::get('/add', "myController@add");
+
 Route::get('/addBlogs', function()
 {
 	$blog = new Blog;  
@@ -36,3 +38,5 @@ Dolorum blanditiis illum quo quaerat, possimus praesentium perferendis! Quod aut
 	$blog->countries = 'Europe';
     $blog->save();  
 });
+
+Route::post('/store', "blogController@store");

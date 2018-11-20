@@ -62,6 +62,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="contact">Contact</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('add')}}">Share</a>
+              </li>
+
             </ul>
             
           </div>

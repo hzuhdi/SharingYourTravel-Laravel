@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 
-class myController extends Controller
+class blogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,24 +15,7 @@ class myController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::orderBy('id', 'DESC')->paginate(10);
-        return view('home')->with('blogs', $blogs);
-        //return view('home', compact('blogs'));
-
     }
-
-    public function about(){
-        return view('about');
-    }
-
-    public function contact(){
-        return view('contact');
-    }
-
-    public function add(){
-        return view('add-blog');
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +25,7 @@ class myController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -53,6 +37,20 @@ class myController extends Controller
     public function store(Request $request)
     {
         //
+    $this->validate($request, [
+    'title' => 'required',
+    'content' => 'required',
+    'countries' => 'required'
+    ]);
+
+     $b = new Blog();
+     $b->title = $request['title'];
+     $b->content = $request['content'];
+     $b->image = $request['image'];
+     $b->countries = $request['countries'];
+     $b->save();
+
+     return redirect()->to('/');
     }
 
     /**
