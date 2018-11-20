@@ -2,13 +2,22 @@
       <div class="top-bar">
         <div class="container">
           <div class="row">
-            <div class="col-9 social">
+            <div class="col-3 social">
               <a href="#"><span class="fa fa-twitter"></span></a>
               <a href="#"><span class="fa fa-facebook"></span></a>
               <a href="#"><span class="fa fa-instagram"></span></a>
               <a href="#"><span class="fa fa-youtube-play"></span></a>
               <a href="#"><span class="fa fa-vimeo"></span></a>
               <a href="#"><span class="fa fa-snapchat"></span></a>
+            </div>
+            <div class="col-6">
+                @if (Auth::check())
+                    <a class="btn btn-outline-light pull-right" href="{{url('logout')}}">Log Out</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('register')}}">{{Auth::user()->username}}</a>
+                @else
+                    <a class="btn btn-outline-light pull-right" href="{{url('login')}}">Log In</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('register')}}">Register</a>
+                @endif
             </div>
             <div class="col-3 search-top">
               <!-- <a href="#"><span class="fa fa-search"></span></a> -->
@@ -29,11 +38,11 @@
           </div>
         </div>
       </div>
-      
+
       <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container">
-          
-         
+
+
           <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
@@ -67,7 +76,7 @@
               </li>
 
             </ul>
-            
+
           </div>
         </div
       </nav>

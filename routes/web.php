@@ -25,7 +25,7 @@ Route::get('/add', "myController@add");
 
 Route::get('/addBlogs', function()
 {
-	$blog = new Blog;  
+	$blog = new Blog;
     $blog->title = "Lost in Germany";
     $blog->content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum minima eveniet recusandae suscipit eum laboriosam fugit amet deleniti iste et. Ad dolores, necessitatibus non saepe tenetur impedit commodi quibusdam natus repellat, exercitationem accusantium perferendis officiis. Laboriosam impedit quia minus pariatur!
 
@@ -36,7 +36,12 @@ Culpa porro quod doloribus dolore sint. Distinctio facilis ullam voluptas nemo v
 Dolorum blanditiis illum quo quaerat, possimus praesentium perferendis! Quod autem optio nobis, placeat officiis dolorem praesentium odit. Vel, cum, a. Adipisci eligendi eaque laudantium dicta tenetur quod, pariatur sunt sed natus officia fuga accusamus reprehenderit ratione, provident possimus ut voluptatum.";
 	$blog->image = NULL;
 	$blog->countries = 'Europe';
-    $blog->save();  
+    $blog->save();
 });
 
 Route::post('/store', "blogController@store");
+
+Auth::routes();
+//
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'UserController@logout');

@@ -1537,7 +1537,7 @@ textarea.form-control {
 
 .search-top .search-top-form {
   position: relative;
-  float: right;
+  /* float: right; */
 }
 
 .search-top .icon {
@@ -1834,4 +1834,13 @@ blockquote p {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+
+.btn-custom {
+    color:white !important;
+}
+
+.btn-custom:hover {
+    color:#6c757d !important;
 }
