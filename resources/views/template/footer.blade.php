@@ -4,7 +4,7 @@
           <div class="col-md-4">
             <h3>Paragraph</h3>
             <p>
-              <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid">
+              <img src="/images/img_1.jpg" alt="Image placeholder" class="img-fluid">
             </p>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
@@ -17,7 +17,7 @@
                   <ul>
                     <li>
                       <a href="">
-                        <img src="images/img_6.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="/images/img_6.jpg" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -29,7 +29,7 @@
                     </li>
                     <li>
                       <a href="">
-                        <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="/images/img_3.jpg" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -41,7 +41,7 @@
                     </li>
                     <li>
                       <a href="">
-                        <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="/images/img_4.jpg" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -55,7 +55,7 @@
                 </div>
               </div>
               <div class="col-md-1"></div>
-              
+
               <div class="col-md-4">
 
                 <div class="mb-5">
@@ -68,7 +68,7 @@
                     <li><a href="#">Categories</a></li>
                   </ul>
                 </div>
-                
+
                 <div class="mb-5">
                   <h3>Social</h3>
                   <ul class="list-unstyled footer-social">
@@ -99,15 +99,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Loader -->
         <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.0.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
 
-    
-    <script src="js/main.js"></script>
+
+    <script src="/js/main.js"></script>
   </body>
 </html>

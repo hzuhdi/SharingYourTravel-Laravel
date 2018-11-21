@@ -68,6 +68,8 @@ class blogController extends Controller
     public function show($id)
     {
         //
+        $b = Blog::find($id);
+        return view('about')->with('b', $b);
     }
 
     /**

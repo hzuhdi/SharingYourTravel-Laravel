@@ -1,6 +1,6 @@
 <div class="col-md-4">
-  <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-    <img src="images/img_5.jpg" alt="Image placeholder">
+  <a href="{{ url('read', $blog->id) }}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+    <img src="/images/img_5.jpg" alt="Image placeholder">
     <div class="blog-content-body">
       <div class="post-meta">
         <span class="category">{{$blog->countries}}</span>

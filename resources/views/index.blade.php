@@ -7,19 +7,19 @@
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    
+
 
 
     <header role="banner">
@@ -53,11 +53,11 @@
           </div>
         </div>
       </div>
-      
+
       <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container">
-          
-         
+
+
           <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
@@ -93,7 +93,7 @@
                 <a class="nav-link" href="contact.html">Contact</a>
               </li>
             </ul>
-            
+
           </div>
         </div
       </nav>
@@ -146,7 +146,7 @@
                 </a>
               </div>
             </div>
-            
+
           </div>
         </div>
         <div class="row">
@@ -205,7 +205,7 @@
             <div class="row">
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_5.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_5.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Food</span>
@@ -218,7 +218,7 @@
               </div>
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_6.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_6.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Travel</span>
@@ -232,7 +232,7 @@
 
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_7.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_7.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Travel, Asia</span>
@@ -245,7 +245,7 @@
               </div>
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_8.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_8.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Travel</span>
@@ -259,7 +259,7 @@
 
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_9.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_9.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Travel</span>
@@ -272,7 +272,7 @@
               </div>
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_10.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_10.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Lifestyle</span>
@@ -286,7 +286,7 @@
 
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_11.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_11.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Lifestyle</span>
@@ -299,7 +299,7 @@
               </div>
               <div class="col-md-6">
                 <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                  <img src="images/img_12.jpg" alt="Image placeholder">
+                  <img src="{{base_path() . '/images/img_12.jpg' }}" alt="Image placeholder">
                   <div class="blog-content-body">
                     <div class="post-meta">
                       <span class="category">Food</span>
@@ -332,7 +332,7 @@
               <div class="col-md-12">
                 <h2 class="mb-4">More Blog Posts</h2>
               </div>
-        
+
               <div class="col-md-12">
 
                 <div class="post-entry-horzontal">
@@ -383,7 +383,7 @@
               </div>
             </div>
 
-            
+
 
           </div>
 
@@ -401,7 +401,7 @@
             <!-- END sidebar-box -->
             <div class="sidebar-box">
               <div class="bio text-center">
-                <img src="images/person_1.jpg" alt="Image Placeholder" class="img-fluid">
+                <img src="{{base_path() . '/images/person_1.jpg' }}" alt="Image Placeholder" class="img-fluid">
                 <div class="bio-body">
                   <h2>Meagan Smith</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
@@ -415,14 +415,14 @@
                 </div>
               </div>
             </div>
-            <!-- END sidebar-box -->  
+            <!-- END sidebar-box -->
             <div class="sidebar-box">
               <h3 class="heading">Popular Posts</h3>
               <div class="post-entry-sidebar">
                 <ul>
                   <li>
                     <a href="">
-                      <img src="images/img_2.jpg" alt="Image placeholder" class="mr-4">
+                      <img src="{{base_path() . '/images/img_2.jpg' }}" alt="Image placeholder" class="mr-4">
                       <div class="text">
                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                         <div class="post-meta">
@@ -434,7 +434,7 @@
                   </li>
                   <li>
                     <a href="">
-                      <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
+                      <img src="{{base_path() . '/images/img_4.jpg' }}" alt="Image placeholder" class="mr-4">
                       <div class="text">
                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                         <div class="post-meta">
@@ -446,7 +446,7 @@
                   </li>
                   <li>
                     <a href="">
-                      <img src="images/img_12.jpg" alt="Image placeholder" class="mr-4">
+                      <img src="{{base_path() . '/images/img_12.jpg' }}" alt="Image placeholder" class="mr-4">
                       <div class="text">
                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                         <div class="post-meta">
@@ -496,14 +496,14 @@
         </div>
       </div>
     </section>
-  
+
     <footer class="site-footer">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4">
             <h3>Paragraph</h3>
             <p>
-              <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid">
+              <img src="{{base_path() . '/images/img_1.jpg' }}" alt="Image placeholder" class="img-fluid">
             </p>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
@@ -516,7 +516,7 @@
                   <ul>
                     <li>
                       <a href="">
-                        <img src="images/img_6.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="{{base_path() . '/images/img_6.jpg' }}" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -528,7 +528,7 @@
                     </li>
                     <li>
                       <a href="">
-                        <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="{{base_path() . '/images/img_3.jpg' }}" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -540,7 +540,7 @@
                     </li>
                     <li>
                       <a href="">
-                        <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
+                        <img src="{{ base_path() . '/images/img_4.jpg' }}" alt="Image placeholder" class="mr-4">
                         <div class="text">
                           <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                           <div class="post-meta">
@@ -554,7 +554,7 @@
                 </div>
               </div>
               <div class="col-md-1"></div>
-              
+
               <div class="col-md-4">
 
                 <div class="mb-5">
@@ -567,7 +567,7 @@
                     <li><a href="#">Categories</a></li>
                   </ul>
                 </div>
-                
+
                 <div class="mb-5">
                   <h3>Social</h3>
                   <ul class="list-unstyled footer-social">
@@ -593,19 +593,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       </div>
     </footer>
     <!-- END footer -->
-    
+
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="{{base_path() . '/js/jquery-3.2.1.min.js' }}"></script>
+    <script src="{{base_path() . '/js/jquery-migrate-3.0.0.js' }}"></script>
+    <script src="{{base_path() . '/js/popper.min.js' }}"></script>
+    <script src="{{base_path() . '/js/bootstrap.min.js' }}"></script>
+    <script src="{{base_path() . '/js/owl.carousel.min.js' }}"></script>
+    <script src="{{base_path() . '/js/jquery.waypoints.min.js' }}"></script>
+    <script src="{{base_path() . '/js/jquery.stellar.min.js' }}"></script>
 
-    
-    <script src="js/main.js"></script>
+
+    <script src="{{base_path() . '/js/main.js' }}"></script>
   </body>
 </html>
