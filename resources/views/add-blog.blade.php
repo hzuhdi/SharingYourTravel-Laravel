@@ -11,7 +11,7 @@
         </div>
         <div class="row blog-entries">
           <div class="col-md-12 col-lg-8 main-content">
-            
+
             <form action="{{ url('store') }}" method="post">
             	{!! csrf_field() !!}
             	<div class="row">
@@ -42,7 +42,7 @@
                     </div>
                   </div>
                 </form>
-            
+
 
           </div>
       </div>
@@ -50,4 +50,3 @@
     </section>
 
 @stop
-

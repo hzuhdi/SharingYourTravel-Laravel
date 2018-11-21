@@ -18,13 +18,13 @@
               <p>{{$b->content}}</p>
             <div class="row mb-5">
               <div class="col-md-12 mb-4 element-animate">
-                <img src="images/img_7.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="/images/img_7.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="col-md-6 mb-4 element-animate">
-                <img src="images/img_9.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="/images/img_9.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="col-md-6 mb-4 element-animate">
-                <img src="images/img_11.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="/images/img_11.jpg" alt="Image placeholder" class="img-fluid">
               </div>
             </div>
             <p></p>

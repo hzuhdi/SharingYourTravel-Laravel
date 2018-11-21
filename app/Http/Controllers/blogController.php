@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use Auth;
 
 class blogController extends Controller
 {
@@ -48,6 +49,11 @@ class blogController extends Controller
      $b->content = $request['content'];
      $b->image = $request['image'];
      $b->countries = $request['countries'];
+
+     //adding the current auth user as author of blog
+     $user = Auth::user();
+     $user->blogs()->save($b);
+     // TODO handle exception when no auth
      $b->save();
 
      return redirect()->to('/');

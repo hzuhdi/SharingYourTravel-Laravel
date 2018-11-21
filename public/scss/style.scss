@@ -53,7 +53,7 @@ header {
 		@include media-breakpoint-down(sm) {
 			background: lighten(#ccc, 10%)!important;
 		}
-		
+
 		.navbar-nav {
 			&.absolute-right {
 				position: absolute;
@@ -107,7 +107,7 @@ header {
 				height: 0;
 				width: 0;
 				position: absolute;
-				pointer-events: none;				
+				pointer-events: none;
 				border-bottom-color: #fff;
 				border-width: 10px;
 				@include media-breakpoint-down(lg) {
@@ -118,7 +118,7 @@ header {
 			.dropdown-item {
 				&:hover {
 					background: theme-color('primary');
-					color: $white;	
+					color: $white;
 				}
 				&.active {
 					background: theme-color('primary');
@@ -351,7 +351,7 @@ header {
 			position: absolute;
 			top: 0; left: 0; right: 0; bottom: 0;
 		}
-		
+
 	}
 	.site-hero-inner {
 		min-height: 750px;
@@ -420,11 +420,11 @@ header {
 	// @include make-row();
 	@include media-breakpoint-up(sm) {
 		@include make-container();
-	}	
+	}
 	.inner {
 		@include media-breakpoint-up(sm) {
 			@include make-row();
-		}	
+		}
 	}
 	.feature, .instructor {
 		@include make-col-ready();
@@ -444,7 +444,7 @@ header {
 			border-right: 1px solid rgba($white, .1);
 		}
 
-		
+
 		h3 {
 			font-size: 18px;
 			color: $white;
@@ -467,7 +467,7 @@ header {
 				}
 			}
 		}
-		
+
 	}
 	&.text-dark {
 		&.last {
@@ -477,7 +477,7 @@ header {
 			}
 		}
 		.feature {
-			
+
 			@include media-breakpoint-up(lg) {
 				border-right: 1px solid lighten(#ccc, 10%);
 				border-bottom: 1px solid lighten(#ccc, 10%);
@@ -505,7 +505,7 @@ header {
 					}
 				}
 			}
-			
+
 		}
 	}
 }
@@ -526,9 +526,9 @@ header {
 	// background-repeat: no-repeat;
 	position: relative;
 	background-position: top left;
-	
+
 	&, .intro {
-		height: 500px;	
+		height: 500px;
 	}
 	p {
 		color: $white;
@@ -594,13 +594,13 @@ textarea.form-control {
 	&.btn-black {
 		background: $black;
 		color: $white;
-		
+
 	}
 	&.btn-primary {
 		color: $white;
 		border-width: 2px;
 		&:hover, &:active, &:focus {
-			border-color: lighten(theme-color('primary'), 10%); 
+			border-color: lighten(theme-color('primary'), 10%);
 			background: lighten(theme-color('primary'), 10%);
 		}
 	}
@@ -629,7 +629,7 @@ textarea.form-control {
 	}
 }
 
-// Flaticon 
+// Flaticon
 .flaticon-custom {
 	font-size: 70px;
 	&:before, &:after {
@@ -638,7 +638,7 @@ textarea.form-control {
 }
 
 
-// Owl Carousel 
+// Owl Carousel
 .no-nav {
 	.owl-nav {
 		display: none;
@@ -653,7 +653,7 @@ textarea.form-control {
 			opacity: 1;
 		}
 	}
-	
+
 	.owl-nav {
 		position: absolute;
 		top: 50%;
@@ -673,7 +673,7 @@ textarea.form-control {
 			}
 		}
 		.owl-prev {
-			
+
 			left: 30px!important;
 			// border: 1px solid red;
 		}
@@ -719,7 +719,7 @@ textarea.form-control {
 			background-repeat: no-repeat;
 			background-position: center center;
 			height: calc(100vh - 117px);
-			min-height: 700px;	
+			min-height: 700px;
 			position: relative;
 			&:before {
 				position: absolute;
@@ -773,7 +773,7 @@ textarea.form-control {
 		&.inner-page {
 			.slider-item {
 				height: calc(50vh - 117px);
-				min-height: 350px;	
+				min-height: 350px;
 				.slider-text {
 					color: $white;
 					height: calc(50vh - 117px);
@@ -797,9 +797,9 @@ textarea.form-control {
 				transition: .3s all ease;
 				&.active {
 					border: 2px solid rgba(255,255,255,1);
-					span {	
+					span {
 						background: rgba(255,255,255,1);
-					}	
+					}
 				}
 			}
 
@@ -849,7 +849,7 @@ textarea.form-control {
 		text-align: center;
 		display: inline-block;
 	}
-} 
+}
 
 
 // box
@@ -878,8 +878,8 @@ textarea.form-control {
 		transition: .3s all ease;
 	}
 	&.hover {
-		
-		
+
+
 		&:hover, &:focus {
 			img {
 				margin-top: -20px;
@@ -897,7 +897,7 @@ textarea.form-control {
 	}
 }
 
-// Breadcrumbs 
+// Breadcrumbs
 .breadcrumb-custom {
 	background: none;
 	padding: 0;
@@ -912,7 +912,7 @@ textarea.form-control {
 			color: $white;
 		}
 
-		
+
 		&.breadcrumb-item+.breadcrumb-item:before {
 			content: "/";
 			color: rgba(255,255,255,.3);
@@ -941,9 +941,9 @@ textarea.form-control {
 	// padding: 0 25px;
 	font-size: 15px;
 	width: 100%;
-	
+
 	float: left;
-	
+
 	background: $white;
 	*:last-child {
 		margin-bottom: 0;
@@ -1197,9 +1197,9 @@ textarea.form-control {
 		}
 		.card-body {
 			padding-top: 15px;
-		}	
+		}
 	}
-	
+
 }
 
 .testimonial {
@@ -1324,10 +1324,10 @@ textarea.form-control {
 
 .search-top {
 	// text-align: right;
-	
+
 	.search-top-form {
-		position: relative;	
-		float: right;
+		position: relative;
+		// float: right;
 	}
 	.icon {
 		position: absolute;
@@ -1435,7 +1435,7 @@ blockquote {
 			&:before {
 				color: color('cyan');
 				left: 0;
-				font-family: "Ionicons"; 
+				font-family: "Ionicons";
 				content: "\f122";
 				position: absolute;
 			}
@@ -1458,7 +1458,7 @@ blockquote {
 
 .overflow {
 	position: relative;
-	overflow-x: hidden; 
+	overflow-x: hidden;
 }
 
 // Footer
@@ -1539,7 +1539,7 @@ blockquote {
 	background-color: rgba(255,255,255,0.9);
 	box-shadow: 0px 24px 64px rgba(0,0,0,0.24);
 	border-radius:16px;
-	opacity: 0; 
+	opacity: 0;
 	visibility: hidden;
 	transition: opacity .2s ease-out, visibility 0s linear .2s;
 	z-index:1000;

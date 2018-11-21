@@ -2,13 +2,22 @@
       <div class="top-bar">
         <div class="container">
           <div class="row">
-            <div class="col-9 social">
+            <div class="col-3 social">
               <a href="#"><span class="fa fa-twitter"></span></a>
               <a href="#"><span class="fa fa-facebook"></span></a>
               <a href="#"><span class="fa fa-instagram"></span></a>
               <a href="#"><span class="fa fa-youtube-play"></span></a>
               <a href="#"><span class="fa fa-vimeo"></span></a>
               <a href="#"><span class="fa fa-snapchat"></span></a>
+            </div>
+            <div class="col-6">
+                @if (Auth::check())
+                    <a class="btn btn-outline-light pull-right" href="{{url('logout')}}">Log Out</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('profile')}}">{{Auth::user()->username}}</a>
+                @else
+                    <a class="btn btn-outline-light pull-right" href="{{url('login')}}">Log In</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('register')}}">Register</a>
+                @endif
             </div>
             <div class="col-3 search-top">
               <!-- <a href="#"><span class="fa fa-search"></span></a> -->
@@ -25,19 +34,19 @@
         <div class="row pt-5">
           <div class="col-12 text-center">
             <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
-            <h1 class="site-logo"><a href="index.html">Sharing Your Travel</a></h1>
+            <h1 class="site-logo"><a href="/">Sharing Your Travel</a></h1>
           </div>
         </div>
       </div>
-      
+
       <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container">
-          
-         
+
+
           <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="home">Home</a>
+                <a class="nav-link active" href="/">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Countries</a>
@@ -67,7 +76,7 @@
               </li>
 
             </ul>
-            
+
           </div>
         </div
       </nav>

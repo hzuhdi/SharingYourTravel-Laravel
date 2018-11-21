@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('content');
-            $table->binary('image')->nullable();
-            $table->enum('countries', ['South America', 'North America', 'Europe', 'Middle East', 'Asia']);
-            $table->integer('user_id');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->string('bio', 200)->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('users');
     }
 }
