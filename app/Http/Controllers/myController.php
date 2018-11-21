@@ -33,6 +33,14 @@ class myController extends Controller
         return view('add-blog');
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        $result = Blog::where('title', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('result-view', compact('result', 'query'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -64,6 +72,13 @@ class myController extends Controller
     public function show($id)
     {
         //
+        /*$b = Blog::find($id);
+        return view('single-blog')->with('b', $b);*/
+        //return view('blog-single', ['b' => Blog::findOrFail($id)]);
+        $b = Blog::find($id);
+ 
+        return view('blog-single', ['b' => $b]);
+
     }
 
     /**

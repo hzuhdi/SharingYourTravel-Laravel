@@ -40,3 +40,7 @@ Dolorum blanditiis illum quo quaerat, possimus praesentium perferendis! Quod aut
 });
 
 Route::post('/store', "blogController@store");
+
+Route::get('/read/{id}', "myController@show");
+
+Route::get('query', 'myController@search');

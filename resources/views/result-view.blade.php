@@ -1,20 +1,20 @@
 @extends('template.index')
 @section('content')
 
-@if(count($blogs))
+@if(count($result))
 
 <section class="site-section py-sm">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2 class="mb-4"><br>Blogs</h2>
+            <h2 class="mb-4"><br>Blogs Finding Result : <b>{{$query}}</b></h2>
           </div>
         </div>
         <div class="row blog-entries">
           <div class="col-md-12 col-lg-12 main-content">
             <div class="row">
 
-        @foreach($blogs as $b)
+        @foreach($result as $b)
         
               <div class="col-md-4">
                 <a href="{{ url('read', $b->id) }}" class="blog-entry element-animate" data-animate-effect="fadeIn">
@@ -34,18 +34,19 @@
         @endforeach
 
            </div>
+
+
 </div>
 </div>
 </div>
 </section>
 
-        {{ $blogs->render()}}
 
-
+        {{ $result->render()}}
 
 
         @else
-        <p>There is no post</p>
+        <p>Blogs not found!</p>
 
  
 @endif    

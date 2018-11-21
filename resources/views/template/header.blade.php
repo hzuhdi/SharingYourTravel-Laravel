@@ -12,9 +12,9 @@
             </div>
             <div class="col-3 search-top">
               <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-              <form action="#" class="search-top-form">
+              <form action="{{ url('query')}}" class="search-top-form">
                 <span class="icon fa fa-search"></span>
-                <input type="text" id="s" placeholder="Type keyword to search...">
+                <input type="text" id="s" placeholder="Type keyword to search..." name="q">
               </form>
             </div>
           </div>
