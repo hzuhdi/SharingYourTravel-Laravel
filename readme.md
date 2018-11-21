@@ -1,8 +1,8 @@
-# WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/)
+# WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/) & Hafizh Ahmad Zuhdi
 ## LARAVEL VERSION : 5.7.13
 
 ### initial setup, installations steps
-- install mysql on your machine
+- you need a mysql server (local or distant)
 - download and install composer on your machine
 - clone the repository
 - browse to the cloned repository directory using command line
@@ -20,4 +20,4 @@ the webserver is now running in development mode on the port 8000 of your local 
 [Try accessing the Home page](http://127.0.0.1:8000/)
 
 ### useful commands
-- ```php artisan migrate:fresh --seed``` will create the database schema, and populate it with random data
+- ```php artisan migrate:fresh --seed``` will drop current database, create the updated schema, and populate it with random data to work with
