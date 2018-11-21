@@ -35,28 +35,30 @@ class blogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    $this->validate($request, [
-    'title' => 'required',
-    'content' => 'required',
-    'countries' => 'required'
-    ]);
+    public function store(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'countries' => 'required'
+        ]);
 
-     $b = new Blog();
-     $b->title = $request['title'];
-     $b->content = $request['content'];
-     $b->image = $request['image'];
-     $b->countries = $request['countries'];
+        $b = new Blog();
+        $b->title = $request['title'];
+        $b->content = $request['content'];
+        $b->image = $request['image'];
+        $b->countries = $request['countries'];
 
-     //adding the current auth user as author of blog
-     $user = Auth::user();
-     $user->blogs()->save($b);
-     // TODO handle exception when no auth
-     $b->save();
-
-     return redirect()->to('/');
+        $user = Auth::user();
+        //if someone is authenticated
+        if ($user) {
+            // we add him as author, save the blog post and then redirect to the homepage
+            $user->blogs()->save($b);
+            $b->save();
+            return redirect()->action('myController@show', $b->id);
+        }
+        else {
+            return view("auth.login");
+        }
     }
 
     /**

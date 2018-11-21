@@ -76,7 +76,7 @@ class myController extends Controller
         return view('single-blog')->with('b', $b);*/
         //return view('blog-single', ['b' => Blog::findOrFail($id)]);
         $b = Blog::find($id);
- 
+
         return view('blog-single', ['b' => $b]);
 
     }

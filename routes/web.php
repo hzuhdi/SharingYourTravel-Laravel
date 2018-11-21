@@ -21,7 +21,7 @@ Route::get('contact', "myController@contact");
 
 // Route::get('home', "myController@index");
 
-Route::get('/add', "myController@add");
+Route::get('/add', "myController@add")->middleware('auth');
 
 Route::get('/addBlogs', function()
 {
