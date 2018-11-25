@@ -45,8 +45,15 @@ class blogController extends Controller
         $b = new Blog();
         $b->title = $request['title'];
         $b->content = $request['content'];
-        $b->image = $request['image'];
         $b->countries = $request['countries'];
+        //Here process to getting the image :
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $request->file('image')->move("images/", $filename);
+        //
+        $b->image = $filename;
+
+
 
         $user = Auth::user();
         //if someone is authenticated
