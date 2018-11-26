@@ -12,7 +12,7 @@
 
                 @if (Auth::check())
                     <a class="btn btn-outline-dark pull-right" href="{{url('edit', $blog->id)}}">Update</a>
-                    <a class="btn btn-outline-dark pull-left" href="{{url('delete', $blog->id)}}">Delete</a>
+                    <a class="btn btn-outline-dark pull-left" onclick="return confirm('Are you sure want to delete this post ?')" href="{{url('delete', $blog->id)}}">Delete</a>
                 @else
                     
                 @endif      
