@@ -9,6 +9,13 @@
       </div>
       <h2>{{$blog->title}}</h2>
       <p>{!!substr($blog->content,0,50)!!}...</p>
+
+                @if (Auth::check())
+                    <a class="btn btn-outline-light pull-right" href="{{url('update')}}">Update</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('delete')}}">Delete</a>
+                @else
+                    
+                @endif      
     </div>
   </a>
 </div>

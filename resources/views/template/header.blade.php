@@ -13,7 +13,7 @@
             <div class="col-6">
                 @if (Auth::check())
                     <a class="btn btn-outline-light pull-right" href="{{url('logout')}}">Log Out</a>
-                    <a class="btn btn-link btn-custom pull-right" href="{{url('profile')}}">{{Auth::user()->username}}</a>
+                    <a class="btn btn-link btn-custom pull-right" href="{{url('profile')}}">{{Auth::user()->email}}</a>
                 @else
                     <a class="btn btn-outline-light pull-right" href="{{url('login')}}">Log In</a>
                     <a class="btn btn-link btn-custom pull-right" href="{{url('register')}}">Register</a>

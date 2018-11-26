@@ -90,6 +90,8 @@ class blogController extends Controller
     public function edit($id)
     {
         //
+        $showEdit = Blog::where('id', $id)->first();
+        return view('edit')->with('showEdit', $showEdit);
     }
 
     /**
@@ -102,6 +104,14 @@ class blogController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $update = Blog::where('id', $id)->first();
+        $update->title = $request['title'];
+        $update->content = $request['content'];
+        $update->title = $request['image'];
+        $update->countries = $request['countries'];
+        $update->update();
+
+        return redirect()->to('/');
     }
 
     /**

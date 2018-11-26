@@ -43,9 +43,13 @@ Route::post('/store', "blogController@store");
 Route::get('/read/{id}', "myController@show");
 Route::get('query', 'myController@search');
 
+//route fo update delete
+Route::get('/edit/{id}', 'blogController@edit')->middleware('auth');
+Route::post('/update/{id}', 'blogController@update')->middleware('auth');
+
 Auth::routes();
 
 
 // UserController routes (auth middleware, so can't access if you're not logged)
 Route::get('/logout', 'UserController@logout');
-Route::get('/profile', 'UserController@showAuthenticatedUser');
+Route::get('/profile', 'UserController@showAuthenticatedUser')->middleware('auth');
