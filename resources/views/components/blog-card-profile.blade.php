@@ -11,8 +11,8 @@
       <p>{!!substr($blog->content,0,50)!!}...</p>
 
                 @if (Auth::check())
-                    <a class="btn btn-outline-light pull-right" href="{{url('update')}}">Update</a>
-                    <a class="btn btn-link btn-custom pull-right" href="{{url('delete')}}">Delete</a>
+                    <a class="btn btn-outline-dark pull-right" href="{{url('edit', $blog->id)}}">Update</a>
+                    <a class="btn btn-outline-dark pull-left" href="{{url('delete', $blog->id)}}">Delete</a>
                 @else
                     
                 @endif      

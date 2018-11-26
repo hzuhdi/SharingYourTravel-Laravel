@@ -107,7 +107,8 @@ class blogController extends Controller
         $update = Blog::where('id', $id)->first();
         $update->title = $request['title'];
         $update->content = $request['content'];
-        $update->title = $request['image'];
+        //TO DO process to getting the image
+        $update->image = $request['image'];
         $update->countries = $request['countries'];
         $update->update();
 

@@ -44,8 +44,8 @@ Route::get('/read/{id}', "myController@show");
 Route::get('query', 'myController@search');
 
 //route fo update delete
-Route::get('/edit/{id}', 'blogController@edit')->middleware('auth');
-Route::post('/update/{id}', 'blogController@update')->middleware('auth');
+Route::get('/edit/{id}', 'blogController@edit');
+Route::post('/update/{id}', 'blogController@update');
 
 Auth::routes();
 
