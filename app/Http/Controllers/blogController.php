@@ -108,7 +108,11 @@ class blogController extends Controller
         $update->title = $request['title'];
         $update->content = $request['content'];
         //TO DO process to getting the image
-        $update->image = $request['image'];
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $request->file('image')->move("images/", $filename);
+        //
+        $update->image = $filename;
         $update->countries = $request['countries'];
         $update->update();
 

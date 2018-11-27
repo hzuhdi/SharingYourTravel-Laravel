@@ -60,7 +60,7 @@
                     <div class="col-md-6 form-group">
                      <label for="images">Images</label>
                      <div class="element-animate">
-                      <img src="{{$showEdit->image}}" alt="Image placeholder" id="showimage" style="max-width:200px;max-height:200px;float:left;">
+                      <img src="{{ asset('images/'.$showEdit->image)}}" alt="Image placeholder" id="showimage" style="max-width:200px;max-height:200px;float:left;">
                       </div>
                       <div class="element-animate">
                         <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $showEdit->image }}"/>
