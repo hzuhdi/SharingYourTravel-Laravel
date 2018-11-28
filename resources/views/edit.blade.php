@@ -48,7 +48,7 @@
                       <label for="email">Countries</label>
                       <select class="form-control" name="countries" id="countries" value="{{ $showEdit->countries }}">
                         <option value="Asia">Asia</option>
-                        <option value="Africa">Africa</option>                        
+                        <option value="Africa">Africa</option>
                         <option value="Europe">Europe</option>
                         <option value="Middle East">Middle East</option>
                         <option value="South Americe">South America</option>
@@ -60,7 +60,11 @@
                     <div class="col-md-6 form-group">
                      <label for="images">Images</label>
                      <div class="element-animate">
-                      <img src="{{ asset('images/'.$showEdit->image)}}" alt="Image placeholder" id="showimage" style="max-width:200px;max-height:200px;float:left;">
+                         @if ($showEdit->image)
+                             <img src="{{ asset('images/'.$showEdit->image)}}" alt="Image placeholder" id="showimage" style="max-width:200px;max-height:200px;float:left;">
+                         @else
+                             no image for this blog post..
+                         @endif 
                       </div>
                       <div class="element-animate">
                         <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $showEdit->image }}"/>
