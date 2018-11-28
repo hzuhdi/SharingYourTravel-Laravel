@@ -10,6 +10,6 @@ class ImageService {
     }
 
     public function removeExistingImage($image){
-        unlink("images/" . $image);
+        unlink(public_path() . "/images/" . $image);
     }
 }
