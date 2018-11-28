@@ -17,6 +17,7 @@
         @foreach($blogs as $b)
             @component('components.blog-card')
                 @slot('blog', $b);
+                @slot('includeControls', false):
             @endcomponent
         @endforeach
 
