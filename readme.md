@@ -21,3 +21,4 @@ the webserver is now running in development mode on the port 8000 of your local 
 
 ### useful commands
 - ```php artisan migrate:fresh --seed``` will drop current database, create the updated schema, and populate it with random data to work with
+- run the tests: ```./vendor/bin/phpunit```
