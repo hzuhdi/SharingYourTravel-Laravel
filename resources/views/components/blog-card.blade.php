@@ -18,5 +18,6 @@
           <a class="btn btn-outline-dark pull-left" onclick="return confirm('Are you sure want to delete this post ?')" href="{{url('delete', $blog->id)}}">Delete</a>
       @endif
     </div>
+    <!--Hai-->
   </a>
 </div>
