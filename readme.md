@@ -1,5 +1,6 @@
 # WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/) & Hafizh Ahmad Zuhdi
 ## LARAVEL VERSION : 5.7.13
+*as we can't set up some continous testing on this GitLab, you should always run tests before pushing to the master branch <br> see [testing](#testing) part of this readme*
 
 ### initial setup, installations steps
 - you need a mysql server (local or distant)
@@ -21,3 +22,10 @@ the webserver is now running in development mode on the port 8000 of your local 
 
 ### useful commands
 - ```php artisan migrate:fresh --seed``` will drop current database, create the updated schema, and populate it with random data to work with
+
+### testing
+To run the tests, type this command from the root directory: ```./vendor/bin/phpunit``` <br/>
+Before running your tests, you need to do these steps once:
+- copy file ```.env.testing.example``` in a new ```.env.testing``` file
+- fill the ```APP_KEY``` value in the new created file with the one in your  ```.env``` file
+- replace the values of the database parameters in the newly created .env.testing file with your testing database values

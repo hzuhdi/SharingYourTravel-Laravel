@@ -10,8 +10,8 @@ class BlogService {
         $this->imageService = $imageService;
     }
 
-    // create and return a Blog object
-    public function create($title, $content, $countries, $image){
+    // create a blog with $user as author
+    public function create($user, $title, $content, $countries, $image){
         $b = new Blog();
         $b->title = $title;
         $b->content = $content;
@@ -20,6 +20,8 @@ class BlogService {
             $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
             $b->image = $filename;
         }
+        $user->blogs()->save($b);
+        $b->save();
         return $b;
     }
 
@@ -28,11 +30,13 @@ class BlogService {
         $blog->title = $title;
         $blog->content = $content;
         if ($image){
-            $this->imageService->removeExistingImage($blog->image);
+            if ($blog->image)
+                $this->imageService->removeExistingImage($blog->image);
             $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
             $blog->image = $filename;
         }
         $blog->countries = $countries;
         $blog->update();
+        return $blog;
     }
 }
