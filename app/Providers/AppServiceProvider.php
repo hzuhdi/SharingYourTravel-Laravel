@@ -23,6 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(ImageService::class, function ($app) {
+            $imageService = new ImageService();
+            return $imageService;
+        });
+
+        $this->app->singleton(BlogService::class, function ($app) {
+            $blogService = new BlogService($imageService);
+            return $blogService;
+        });
     }
 }

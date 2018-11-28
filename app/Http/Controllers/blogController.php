@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
+use App\Services\BlogService;
 
 class blogController extends Controller
 {
+
+    public function __construct(BlogService $blogService)
+    {
+        $this->blogService = $blogService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,18 +48,7 @@ class blogController extends Controller
             'countries' => 'required'
         ]);
 
-        $b = new Blog();
-        $b->title = $request['title'];
-        $b->content = $request['content'];
-        $b->countries = $request['countries'];
-        //Here process to getting the image :
-        $file = $request->file('image');
-        $filename = $file->getClientOriginalName();
-        $request->file('image')->move("images/", $filename);
-        //
-        $b->image = $filename;
-
-
+        $b = $this->blogService->create($request['title'], $request['content'], $request['countries'], $request->file('image'));
 
         $user = Auth::user();
         //if someone is authenticated
@@ -103,20 +98,12 @@ class blogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // get the blog to update
         $update = Blog::where('id', $id)->first();
-        $update->title = $request['title'];
-        $update->content = $request['content'];
-        //TO DO process to getting the image
-        $file = $request->file('image');
-        $filename = $file->getClientOriginalName();
-        $request->file('image')->move("images/", $filename);
-        //
-        $update->image = $filename;
-        $update->countries = $request['countries'];
-        $update->update();
-
-        return redirect()->to('/');
+        // update it
+        $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        // redirect to the blog page now that it's updated
+        return redirect()->action('myController@show', $update->id);
     }
 
     /**
