@@ -28,6 +28,7 @@ class BlogService {
         $blog->title = $title;
         $blog->content = $content;
         if ($image){
+            $this->imageService->removeExistingImage($blog->image);
             $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
             $blog->image = $filename;
         }

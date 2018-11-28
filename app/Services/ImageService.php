@@ -9,4 +9,8 @@ class ImageService {
         $file_from_request->move("images/", $filename);
         return $filename;
     }
+
+    public function removeExistingImage($image){
+        unlink("images/" . $image);
+    }
 }
