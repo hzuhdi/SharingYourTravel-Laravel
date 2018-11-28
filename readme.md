@@ -1,5 +1,6 @@
 # WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/) & Hafizh Ahmad Zuhdi
 ## LARAVEL VERSION : 5.7.13
+*as we can't set up some continous testing on this GitLab, you should always run tests before pushing to the master branch <br> see [testing](#testing) part of this readme*
 
 ### initial setup, installations steps
 - you need a mysql server (local or distant)
