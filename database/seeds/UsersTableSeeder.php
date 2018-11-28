@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         // create a single user so we can use it to log
         factory(User::class)->create([
-            'username' => 'Bob',
+            'email' => "bob@email.com",
             'password' => bcrypt('password')
         ]);
         // create other users to populate the db
