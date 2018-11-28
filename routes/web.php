@@ -13,15 +13,15 @@ use App\Blog;
 |
 */
 
-Route::get('/', "myController@index");
+Route::get('/', "MyController@index");
 
-Route::get('about', "myController@about");
+Route::get('about', "MyController@about");
 
-Route::get('contact', "myController@contact");
+Route::get('contact', "MyController@contact");
 
-// Route::get('home', "myController@index");
+// Route::get('home', "MyController@index");
 
-Route::get('/add', "myController@add")->middleware('auth');
+Route::get('/add', "MyController@add")->middleware('auth');
 
 Route::get('/addBlogs', function()
 {
@@ -39,14 +39,14 @@ Dolorum blanditiis illum quo quaerat, possimus praesentium perferendis! Quod aut
     $blog->save();
 });
 
-Route::post('/store', "blogController@store");
-Route::get('/read/{id}', "myController@show");
-Route::get('query', 'myController@search');
+Route::post('/store', "BlogController@store");
+Route::get('/read/{id}', "MyController@show");
+Route::get('query', 'MyController@search');
 
 //route fo update delete
-Route::get('/edit/{id}', 'blogController@edit');
-Route::post('/update/{id}', 'blogController@update');
-Route::get('/delete/{id}', 'blogController@destroy');
+Route::get('/edit/{id}', 'BlogController@edit');
+Route::post('/update/{id}', 'BlogController@update');
+Route::get('/delete/{id}', 'BlogController@destroy');
 
 Auth::routes();
 

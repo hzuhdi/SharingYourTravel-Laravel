@@ -7,7 +7,7 @@ use App\Blog;
 use Auth;
 use App\Services\BlogService;
 
-class blogController extends Controller
+class BlogController extends Controller
 {
 
     public function __construct(BlogService $blogService)
@@ -56,7 +56,7 @@ class blogController extends Controller
             // we add him as author, save the blog post and then redirect to the homepage
             $user->blogs()->save($b);
             $b->save();
-            return redirect()->action('myController@show', $b->id);
+            return redirect()->action('MyController@show', $b->id);
         }
         else {
             return view("auth.login");
@@ -103,7 +103,7 @@ class blogController extends Controller
         // update it
         $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         // redirect to the blog page now that it's updated
-        return redirect()->action('myController@show', $update->id);
+        return redirect()->action('MyController@show', $update->id);
     }
 
     /**

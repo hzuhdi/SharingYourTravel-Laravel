@@ -16,7 +16,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->action('myController@index');
+        return redirect()->action('MyController@index');
     }
 
     public function showAuthenticatedUser(){
