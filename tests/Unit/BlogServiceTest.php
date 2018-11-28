@@ -19,21 +19,27 @@ class BlogServiceTest extends TestCase
         $this->blogService = $this->app->make('App\Services\BlogService');
     }
 
-    public function test_should_create_a_blog()
+    public function test_should_create_a_blog_in_database()
     {
+        // we need a user in database to create a blog
+        $user = factory(\App\User::class)->create();
         $title = $this->faker->sentence(6);
         $content = $this->faker->text;
         $countries = $this->faker->randomElement(['South America', 'North America', 'Europe', 'Middle East', 'Asia']);
         $image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME);
-        $blog = $this->blogService->create($title, $content, $countries, $image);
+        $blog = $this->blogService->create($user, $title, $content, $countries, $image);
 
-        $this->assertSame($blog->title, $title);
-        $this->assertSame($blog->content, $content);
-        $this->assertSame($blog->countries, $countries);
-        $this->assertSame($blog->image, self::MOCK_IMAGE_NAME);
+        // verifying that the database contains a new blog with good values
+        $this->assertDatabaseHas('blogs', [
+            'title' => $title,
+            'content' => $content,
+            'countries' => $countries,
+            'image' => self::MOCK_IMAGE_NAME,
+            'user_id' => $user->id
+        ]);
     }
 
-    public function test_should_update_a_blog_in_database(){        
+    public function test_should_update_a_blog_in_database(){
         // creating a blog in db to work with
         $blog = factory(\App\Blog::class)->create([
             'user_id' => function() {

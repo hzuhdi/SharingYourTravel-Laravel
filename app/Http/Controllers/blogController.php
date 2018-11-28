@@ -48,18 +48,12 @@ class BlogController extends Controller
             'countries' => 'required'
         ]);
 
-        $b = $this->blogService->create($request['title'], $request['content'], $request['countries'], $request->file('image'));
-
-        $user = Auth::user();
-        //if someone is authenticated
-        if ($user) {
-            // we add him as author, save the blog post and then redirect to the homepage
-            $user->blogs()->save($b);
-            $b->save();
-            return redirect()->action('MyController@show', $b->id);
-        }
-        else {
+        // TODO see if it's really necessary (should use auth middleware instead?)
+        if (!$user = Auth::user())
             return view("auth.login");
+
+        $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return redirect()->action('MyController@show', $b->id);
         }
     }
 
