@@ -27,15 +27,15 @@ class BlogService {
 
     // update a given $blog
     public function update($blog, $title, $content, $countries, $image){
-        $blog->title = $title;
-        $blog->content = $content;
+        $blog->title = $title ? $title : $blog->title;
+        $blog->content = $content ? $content : $blog->content;
         if ($image){
             if ($blog->image)
                 $this->imageService->removeExistingImage($blog->image);
             $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
             $blog->image = $filename;
         }
-        $blog->countries = $countries;
+        $blog->countries = $countries ? $countries : $blog->countries;
         $blog->update();
         return $blog;
     }
