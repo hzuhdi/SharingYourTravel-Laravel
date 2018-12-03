@@ -54,3 +54,6 @@ Auth::routes();
 // UserController routes (auth middleware, so can't access if you're not logged)
 Route::get('/logout', 'UserController@logout');
 Route::get('/profile', 'UserController@showAuthenticatedUser')->middleware('auth');
+
+// Route for admin
+Route::get('thisisadmin', "MyController@admin");

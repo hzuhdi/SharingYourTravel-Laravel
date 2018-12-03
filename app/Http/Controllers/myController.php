@@ -41,6 +41,10 @@ class MyController extends Controller
         return view('result-view', compact('result', 'query'));
     }
 
+    public function admin(){
+        return view('admin/index');
+    }
+
 
     /**
      * Show the form for creating a new resource.
