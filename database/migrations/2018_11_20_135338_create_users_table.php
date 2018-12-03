@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('bio', 200)->nullable();
+            $table->string('type')->default('default');
+            //Automatically put the default type when register
             $table->rememberToken();
             $table->timestamps();
         });

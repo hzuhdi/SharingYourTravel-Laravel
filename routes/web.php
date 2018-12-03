@@ -56,4 +56,6 @@ Route::get('/logout', 'UserController@logout');
 Route::get('/profile', 'UserController@showAuthenticatedUser')->middleware('auth');
 
 // Route for admin
+Route::get('/admin', 'AdminController@admin')->middleware('is_admin')    
+    ->name('admin');
 Route::get('thisisadmin', "MyController@admin");
