@@ -41,6 +41,10 @@ class MyController extends Controller
         return view('result-view', compact('result', 'query'));
     }
 
+    public function admin(){
+        return view('admin/index');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +80,6 @@ class MyController extends Controller
         return view('single-blog')->with('b', $b);*/
         //return view('blog-single', ['b' => Blog::findOrFail($id)]);
         $b = Blog::find($id);
-
         return view('blog-single', ['b' => $b]);
 
     }
