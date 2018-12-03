@@ -54,7 +54,6 @@ class BlogController extends Controller
 
         $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         return redirect()->action('MyController@show', $b->id);
-        }
     }
 
     /**
@@ -65,7 +64,6 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
         $b = Blog::find($id);
         return view('about')->with('b', $b);
     }
