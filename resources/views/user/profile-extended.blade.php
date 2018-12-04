@@ -55,7 +55,7 @@
                   <label for="name">Password</label>
                   <input type="Password" id="password" class="form-control" name="password" value="{{ $user->email}}">
                   <label for="content">Bio</label>
-                  <textarea name="bio" id="bio" class="form-control " cols="30" rows="8">"{{$user->bio}}"</textarea>
+                  <textarea name="bio" id="bio" class="form-control " cols="30" rows="8">{{$user->bio}}</textarea>
 
                   <div class="row">
                     <div class="col-md-12 form-group" style="margin: 5px;">

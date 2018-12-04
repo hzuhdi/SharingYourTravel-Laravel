@@ -64,7 +64,7 @@
                              <img src="{{ asset('images/'.$showEdit->image)}}" alt="Image placeholder" id="showimage" style="max-width:200px;max-height:200px;float:left;">
                          @else
                              no image for this blog post..
-                         @endif 
+                         @endif
                       </div>
                       <div class="element-animate">
                         <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $showEdit->image }}"/>
@@ -74,7 +74,7 @@
                   <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="content">Content</label>
-                      <textarea name="content" id="content" class="form-control " cols="30" rows="8">"{{$showEdit->content}}"</textarea>
+                      <textarea name="content" id="content" class="form-control " cols="30" rows="8">{{$showEdit->content}}</textarea>
                     </div>
                   </div>
                   <div class="row">
