@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Star Admin Free Bootstrap Admin Dashboard Template</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="admin/vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="admin/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/admin/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/admin/vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="admin/css/style.css">
+  <link rel="stylesheet" href="/admin/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="admin/images/favicon.png" />
+  <link rel="shortcut icon" href="/admin/images/favicon.png" />
 </head>
 
 <body>
@@ -24,32 +24,32 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="admin/index.html">
+        <a class="navbar-brand brand-logo" href="/admin/index.html">
           <img src="admin/images/logo.svg" alt="logo" />
         </a>
-        <a class="navbar-brand brand-logo-mini" href="admin/index.html">
+        <a class="navbar-brand brand-logo-mini" href="/admin/index.html">
           <img src="admin/images/logo-mini.svg" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
-            <a href="admin/#" class="nav-link">Schedule
+            <a href="/admin/#" class="nav-link">Schedule
               <span class="badge badge-primary ml-1">New</span>
             </a>
           </li>
           <li class="nav-item active">
-            <a href="admin/#" class="nav-link">
+            <a href="/admin/#" class="nav-link">
               <i class="mdi mdi-elevation-rise"></i>Reports</a>
           </li>
           <li class="nav-item">
-            <a href="admin/#" class="nav-link">
+            <a href="/admin/#" class="nav-link">
               <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="admin/#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="/admin/#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-file-document-box"></i>
               <span class="count">7</span>
             </a>
@@ -104,7 +104,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="admin/#" data-toggle="dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="/admin/#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
               <span class="count">4</span>
             </a>
@@ -159,7 +159,7 @@
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="admin/#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="/admin/#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Hello, Richard V.Welsh !</span>
               <img class="img-xs rounded-circle" src="admin/images/faces/face1.jpg" alt="Profile image">
             </a>
@@ -222,13 +222,13 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/index.html">
+            <a class="nav-link" href="/admin/index.html">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="admin/#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="/admin/#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Basic UI Elements</span>
               <i class="menu-arrow"></i>
@@ -236,40 +236,40 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/ui-features/buttons.html">Buttons</a>
+                  <a class="nav-link" href="/admin/pages/ui-features/buttons.html">Buttons</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/ui-features/typography.html">Typography</a>
+                  <a class="nav-link" href="/admin/pages/ui-features/typography.html">Typography</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/pages/forms/basic_elements.html">
+            <a class="nav-link" href="/admin/pages/forms/basic_elements.html">
               <i class="menu-icon mdi mdi-backup-restore"></i>
               <span class="menu-title">Form elements</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/pages/charts/chartjs.html">
+            <a class="nav-link" href="/admin/pages/charts/chartjs.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Charts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/pages/tables/basic-table.html">
+            <a class="nav-link" href="/admin/pages/tables/basic-table.html">
               <i class="menu-icon mdi mdi-table"></i>
               <span class="menu-title">Tables</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin/pages/icons/font-awesome.html">
+            <a class="nav-link" href="/admin/pages/icons/font-awesome.html">
               <i class="menu-icon mdi mdi-sticker"></i>
               <span class="menu-title">Icons</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="admin/#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="/admin/#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-restart"></i>
               <span class="menu-title">User Pages</span>
               <i class="menu-arrow"></i>
@@ -277,19 +277,19 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/samples/blank-page.html"> Blank Page </a>
+                  <a class="nav-link" href="/admin/pages/samples/blank-page.html"> Blank Page </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/samples/login.html"> Login </a>
+                  <a class="nav-link" href="/admin/pages/samples/login.html"> Login </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/samples/register.html"> Register </a>
+                  <a class="nav-link" href="/admin/pages/samples/register.html"> Register </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/samples/error-404.html"> 404 </a>
+                  <a class="nav-link" href="/admin/pages/samples/error-404.html"> 404 </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="admin/pages/samples/error-500.html"> 500 </a>
+                  <a class="nav-link" href="/admin/pages/samples/error-500.html"> 500 </a>
                 </li>
               </ul>
             </div>
@@ -303,8 +303,8 @@
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
                 <p>Like what you see? Check out our premium version for more.</p>
-                <a class="btn ml-auto download-button d-none d-md-block" href="admin/https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Download Free Version</a>
-                <a class="btn purchase-button mt-4 mt-md-0" href="admin/https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Upgrade To Pro</a>
+                <a class="btn ml-auto download-button d-none d-md-block" href="/admin/https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Download Free Version</a>
+                <a class="btn purchase-button mt-4 mt-md-0" href="/admin/https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Upgrade To Pro</a>
                 <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
               </span>
             </div>
@@ -765,14 +765,14 @@
                             Manage
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-history fa-fw"></i>Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
                           </div>
                         </div>
@@ -808,14 +808,14 @@
                             Manage
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-history fa-fw"></i>Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
                           </div>
                         </div>
@@ -849,14 +849,14 @@
                             Manage
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-history fa-fw"></i>Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                            <a class="dropdown-item" href="admin/#">
+                            <a class="dropdown-item" href="/admin/#">
                               <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
                           </div>
                         </div>
@@ -873,7 +873,7 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="admin/http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="/admin/http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
               <i class="mdi mdi-heart text-danger"></i>
             </span>

@@ -58,6 +58,7 @@ Route::get('/edit-profile', 'UserController@show')->middleware('auth');
 Route::post('/update-profile', 'UserController@update')->middleware('auth');
 
 // Route for admin, I created a middleware to check whether the user is admin or not
-Route::get('/admin', 'AdminController@admin')->middleware('is_admin')    
-    ->name('admin');
+// Route::get('/admin', 'AdminController@admin')->middleware('is_admin')
+//     ->name('admin');
+Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
