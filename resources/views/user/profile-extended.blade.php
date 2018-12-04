@@ -49,13 +49,13 @@
 
                 <div class="bio-body">
                   <label for="name">Full Name</label>
-                  <input type="text" id="title" class="form-control" name="title" value="{{ $user->name}}">
+                  <input type="text" id="name" class="form-control" name="name" value="{{ $user->name}}">
                   <label for="name">Email</label>
-                  <input type="text" id="title" class="form-control" name="title" value="{{ $user->email}}">
+                  <input type="email" id="email" class="form-control" name="email" value="{{ $user->email}}">
                   <label for="name">Password</label>
-                  <input type="Password" id="title" class="form-control" name="title" value="{{ $user->email}}">
+                  <input type="Password" id="password" class="form-control" name="password" value="{{ $user->email}}">
                   <label for="content">Bio</label>
-                  <textarea name="content" id="content" class="form-control " cols="30" rows="8">"{{$user->bio}}"</textarea>
+                  <textarea name="bio" id="bio" class="form-control " cols="30" rows="8">"{{$user->bio}}"</textarea>
 
                   <div class="row">
                     <div class="col-md-12 form-group" style="margin: 5px;">
