@@ -35,3 +35,4 @@ yarn-error.log
 .env.testing
 .phpunit.result.cache
 /public/images
+/public/images/*
