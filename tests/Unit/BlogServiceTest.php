@@ -13,21 +13,21 @@ class BlogServiceTest extends TestCase
     use RefreshDatabase;
 
     const MOCK_IMAGE_NAME = "image_test.png";
+    const MOCK_IMAGE_NAME_BIS = "image_test_bis.png";
 
     public function setUp() {
         parent::setUp();
         $this->imageService = $this->app->make('App\Services\ImageService');
         $this->blogService = $this->app->make('App\Services\BlogService');
-    }
-
-    private function addPublicPathAndUnlink(String $imagename){
-        unlink(public_path() . "/images/" . $imagename);
+        $this->mock_image_full_path = public_path() . '/images/' . self::MOCK_IMAGE_NAME;
+        $this->mock_image_bis_full_path = public_path() . '/images/' . self::MOCK_IMAGE_NAME_BIS;
     }
 
     public function test_should_create_a_blog_in_database()
     {
         // we need a user in database to create a blog
         $user = factory(\App\User::class)->create();
+
         $title = $this->faker->sentence(6);
         $content = $this->faker->text;
         $countries = $this->faker->randomElement(['South America', 'North America', 'Europe', 'Middle East', 'Asia']);
@@ -42,10 +42,14 @@ class BlogServiceTest extends TestCase
             'image' => self::MOCK_IMAGE_NAME,
             'user_id' => $user->id
         ]);
+
+        $this->assertTrue($blog->user->id == $user->id);
+        $this->assertTrue($user->blogs->contains($blog));
+
+        $this->assertFileExists($this->mock_image_full_path);
+        unlink($this->mock_image_full_path);
     }
 
-    //TODO test deleting previous image when updating
-    //TODO test image not deleted if not maj
     public function test_should_update_a_blog_in_database(){
         // creating a blog in db to work with
         $blog = factory(\App\Blog::class)->create([
@@ -73,11 +77,8 @@ class BlogServiceTest extends TestCase
         ]);
 
         $this->assertTrue(\App\Blog::count() == 1);
-        $this->assertFileExists(self::MOCK_IMAGE_NAME);
-
-
-        // deleting the image created for the test
-        $this->addPublicPathAndUnlink(self::MOCK_IMAGE_NAME);
+        $this->assertFileExists($this->mock_image_full_path);
+        unlink($this->mock_image_full_path);
     }
 
     public function test_should_delete_previous_image_from_server(){
@@ -90,25 +91,20 @@ class BlogServiceTest extends TestCase
                 return $user->id;
             }
         ]);
-        $full_path_first_image = public_path() . "/images/" . self::MOCK_IMAGE_NAME;
-        $this->assertFileNotExists($full_path_first_image);
-
+        $this->assertFileNotExists($this->mock_image_full_path);
         // making sure the image is present on the server
         $mock_image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME);
-        $filename = $this->imageService->getFileNameFromRequestAndSaveIt($mock_image);
-        $full_path_first_image = public_path() . "/images/" . self::MOCK_IMAGE_NAME;
-        $this->assertFileExists($full_path_first_image);
+        $this->imageService->getFileNameFromRequestAndSaveIt($mock_image);
+        $this->assertFileExists($this->mock_image_full_path);
 
-        // creating a new image, and updating the blog
-        $image = UploadedFile::fake()->image("new " . self::MOCK_IMAGE_NAME);
+        // creating a new image, and updating the blog with it
+        $image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME_BIS);
         $blog = $this->blogService->update($blog, null, null, null, $image);
 
-        $full_path_second_image = public_path() . "/images/" . "new " . self::MOCK_IMAGE_NAME;
-        $this->assertFileExists($full_path_second_image);
-        $this->assertFileNotExists($full_path_first_image);
 
-        // deleting the image created for the test
-        $this->addPublicPathAndUnlink(self::MOCK_IMAGE_NAME);
-        $this->addPublicPathAndUnlink("new " . self::MOCK_IMAGE_NAME);
+        $this->assertFileExists($this->mock_image_bis_full_path);
+        $this->assertFileNotExists($this->mock_image_full_path);
+
+        unlink($this->mock_image_bis_full_path);
     }
 }
