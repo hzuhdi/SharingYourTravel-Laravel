@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('bio', 200)->nullable();
             $table->string('type')->default('default');
             //Automatically put the default type when register
+            $table->binary('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ class User extends Authenticable
 	const DEFAULT_TYPE = 'default';
 
     protected $table = 'users';
-    protected $fillable = ['email', 'name', 'password', 'bio', 'type'];
+    protected $fillable = ['email', 'name', 'password', 'bio', 'type', 'image'];
     protected $hidden = ['password', 'type', 'remember_token'];
 
     public function isAdmin(){
