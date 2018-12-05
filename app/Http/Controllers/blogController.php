@@ -112,4 +112,10 @@ class BlogController extends Controller
 
         return redirect()->to('/');
     }
+
+    public function getThreeLatestPosts(){
+        // return 'test';
+        $posts = $this->blogService->getLatestPost(3);
+        return $posts;
+    }
 }

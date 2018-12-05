@@ -39,4 +39,8 @@ class BlogService {
         $blog->update();
         return $blog;
     }
+
+    public function getLatestPost($amount){
+        return (Blog::all())->take($amount);
+    }
 }
