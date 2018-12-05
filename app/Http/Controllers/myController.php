@@ -55,6 +55,9 @@ class MyController extends Controller
             case 'middle-east':
                 $query = "Middle East";
                 break;
+            default:
+                return redirect('/');
+                break;
         }
         $blogs = $this->blogService->getBlogsByCountry($query);
         return view('home')->with('blogs', $blogs)->with('title', $query);
