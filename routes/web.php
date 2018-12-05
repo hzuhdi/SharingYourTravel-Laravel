@@ -63,3 +63,5 @@ Route::post('/update-profile', 'UserController@update')->middleware('auth');
 Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
 Route::get('/blogs/latests', "BlogController@getThreeLatestPosts");
+
+Route::get('/country/{country}', 'MyController@country');

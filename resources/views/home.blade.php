@@ -1,13 +1,17 @@
 @extends('template.index')
 @section('content')
 
-@if(count($blogs))
+@if(count($blogs) > 0)
 
 <section class="site-section py-sm">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2 class="mb-4"><br>Blogs</h2>
+            @if (isset($title))
+                <h2 class="mb-4"><br>{{$title}}</h2>
+            @else
+                <h2 class="mb-4"><br>Blogs</h2>
+            @endif
           </div>
         </div>
         <div class="row blog-entries">
@@ -26,10 +30,10 @@
 </div>
 </div>
 </section>
-
+{{--
         {{ $blogs->render()}}
 
-
+ --}}
 
 
         @else

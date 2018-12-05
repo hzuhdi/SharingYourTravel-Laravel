@@ -41,6 +41,10 @@ class BlogService {
     }
 
     public function getLatestPost($amount){
-        return (Blog::all())->take($amount);
+        return Blog::orderBy('created_at', 'desc')->take($amount)->get();
+    }
+
+    public function getBlogsByCountry($country){
+        return Blog::where('countries', $country)->get();
     }
 }

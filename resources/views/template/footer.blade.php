@@ -81,6 +81,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script>
         $.get( "/blogs/latests", function( blogs ) {
             blogs.map( b => {
+                console.log(b);
                 let elem =  `
                 <li>
                   <a href="">
