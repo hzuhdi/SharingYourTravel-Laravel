@@ -35,7 +35,7 @@
               <div class="bio text-center">
 
                 @if (is_null($user->image))
-                <img src="/images/profile.png" alt="Image Placeholder" class="bio img">
+                <img src="/images/default.png" alt="Image Placeholder" class="bio img">
                 @else
                 <img src="/images/{{ $user->image }}" alt="Image Placeholder" class="img-fluid">
                 @endif

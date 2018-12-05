@@ -3,7 +3,7 @@
       @if ($blog->image)
           <img src="{{ asset('images/'.$blog->image)  }}" alt="Image placeholder">
       @else
-           <img src="{{ asset('images/img_5.jpg')}}" alt="Default image">
+           <img src="{{ asset('images/default.png')}}" alt="Default image">
       @endif
     <div class="blog-content-body">
       <div class="post-meta">
