@@ -1,3 +1,31 @@
+@section('js')
+<script type="text/javascript">
+
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#showimage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inputimage").change(function () {
+        readURL(this);
+    });
+
+</script>
+<script>
+      $(document).ready(function() {
+      $('#summernote').summernote();
+      });
+</script>
+
+@stop
+
 @extends('template.index')
 @section('content')
 

@@ -17,6 +17,12 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--This one is for summernote -->
+    <!-- include libraries(jQuery, bootstrap) -->
+    
+
+    
 </head>
 
 <body>

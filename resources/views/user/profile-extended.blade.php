@@ -41,20 +41,21 @@
                 @endif
                 <!-- Placing the input for profile pic-->
 
-                <div class="element-animate">
-                <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $user->image }}"/>
-                </div>
-
-
-
                 <div class="bio-body">
+                  <div class="element-animate img-fluid ">
+                  <img src="http://placehold.it/100x100" alt="Image placeholder" id="showimage" style="max-width:100px;max-height:100px;float:center;">
+                  </div>
+
+                  <div class="element-animate">
+                  <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $user->image }}"/>
+                  </div>
                   <label for="name">Full Name</label>
                   <input type="text" id="name" class="form-control" name="name" value="{{ $user->name}}">
                   <label for="name">Email</label>
                   <input type="email" id="email" class="form-control" name="email" value="{{ $user->email}}">
                   <label for="name">Password</label>
                   <input type="Password" id="password" class="form-control" name="password" value="{{ $user->email}}">
-                  <label for="content">Bio</label>
+                  <label for="content">Bio <strong>*max 200 words</strong></label>
                   <textarea name="bio" id="bio" class="form-control " cols="30" rows="8">{{$user->bio}}</textarea>
 
                   <div class="row">

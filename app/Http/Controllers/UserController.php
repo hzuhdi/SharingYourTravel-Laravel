@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -39,9 +41,11 @@ class UserController extends Controller
     public function update(Request $request){
         $current_user = Auth::user();
         //update it
-        $this->userService->update($current_user, $request['email'], $request['name'], $request['password'], $request['bio'], $request->file('image'));
+        $this->userService->update($current_user, $request['email'], $request['name'], Hash::make($request['password']), $request['bio'], $request->file('image'));
         //redirect to profile
         return view('user.profile')->with('user', $current_user);
 
     }
+
+
 }

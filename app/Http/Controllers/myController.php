@@ -33,6 +33,10 @@ class MyController extends Controller
         return view('add-blog');
     }
 
+    public function addtest(){
+        return view('add-test');
+    }
+
     public function search(Request $request)
     {
         $query = $request->get('q');

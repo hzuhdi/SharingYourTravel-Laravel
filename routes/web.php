@@ -23,6 +23,9 @@ Route::get('contact', "MyController@contact");
 
 Route::get('/add', "MyController@add")->middleware('auth');
 
+Route::get('/addtest', "MyController@addtest")->middleware('auth');
+
+
 Route::get('/addBlogs', function()
 {
 	$blog = new Blog;
