@@ -34,7 +34,7 @@ class MyController extends Controller
     }
 
     public function addtest(){
-        return view('add-test');
+        return view('addtest2');
     }
 
     public function search(Request $request)

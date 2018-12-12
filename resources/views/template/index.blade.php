@@ -20,6 +20,9 @@
 
     <!--This one is for summernote -->
     <!-- include libraries(jQuery, bootstrap) -->
+    @stack('styles')
+    @stack('scripts')
+    
     
 
     
@@ -27,7 +30,7 @@
 
 <body>
 @include('template.header')
-
+    @yield('assets')
 	@yield('content')
 
 @include('template.footer')

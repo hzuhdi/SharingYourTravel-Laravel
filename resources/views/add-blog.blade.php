@@ -18,15 +18,30 @@
     });
 
 </script>
-<script>
-      $(document).ready(function() {
-      $('#summernote').summernote();
-      });
-</script>
 
 @stop
 
+
+
+
 @extends('template.index')
+
+<!-- For receiving assets -->
+
+@push('styles')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+@endpush
+
+@push('scripts')
+
+@endpush
+
+
 @section('content')
 
 
@@ -38,7 +53,7 @@
           </div>
         </div>
         <div class="row blog-entries">
-          <div class="col-md-12 col-lg-8 main-content">
+          <div class="col-md-12 col-lg-12 main-content">
 
             <form action="{{ url('store') }}" method="post" enctype="multipart/form-data">
             	{!! csrf_field() !!}
@@ -78,18 +93,28 @@
                       <textarea name="content" id="content" class="form-control " cols="30" rows="8"></textarea>
                     </div>
                   </div>
-                  <div class="row">
+
+                  <!-- Summernote -->
+                  <!-- <div class="row">
                     <div class="col-md-12 form-group">
-                        <textarea id="summernote" name="editordata"></textarea>
-                    </div>
-                  </div>
+                      <textarea id="summernote" name="content"></textarea>
+                        <script>
+                          $('#summernote').summernote({
+                            placeholder: 'Content',
+                            tabsize: 2,
+                            height: 300
+                          });
+                        </script>
+                      </div>
+                      </div> -->
+
+
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <input type="submit" class="btn btn-primary">
                     </div>
                   </div>
                 </form>
-
 
           </div>
       </div>
