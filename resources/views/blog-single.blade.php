@@ -4,6 +4,7 @@
     <!-- END header -->
 
     <section class="site-section py-lg">
+
       <div class="container">
         
         <div class="row blog-entries">
@@ -25,12 +26,23 @@
             </div>
             <p></p>
             </div>
+            <!-- Will be showing the author -->
+            @component('comment.authorbox-blog-single')
+            @endcomponent
           </div>
         </div>
       </div>
     </section>
 
     <!-- END section -->
+
+    <!-- form for comment -->
+    @component('comment.comment-box')
+    @endcomponent
+
+
+
+
 
  @stop 
     
