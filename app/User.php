@@ -23,4 +23,8 @@ class User extends Authenticable
     {
         return $this->hasMany('App\Blog');
     }
+
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
 }
