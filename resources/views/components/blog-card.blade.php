@@ -9,7 +9,7 @@
       <div class="post-meta">
         <span class="category">{{$blog->countries}}</span>
         <span class="mr-2">{{$blog->created_at}}</span> &bullet;
-        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+        <span class="ml-2"><span class="fa fa-comments"></span> {{$blog->comments->count()}}</span>
       </div>
       <h2>{{$blog->title}}</h2>
       <p>{!!substr($blog->content,0,50)!!}...</p>

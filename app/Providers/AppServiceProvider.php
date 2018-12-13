@@ -37,5 +37,10 @@ class AppServiceProvider extends ServiceProvider
             $userService = new UserService($imageService);
             return $userService;
         });
+
+        $this->app->singleton(CommentService::class, function ($app) {
+            $commentService = new CommentService($commentService);
+            return $commentService;
+        });
     }
 }

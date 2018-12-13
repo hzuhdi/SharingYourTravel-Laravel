@@ -50,6 +50,9 @@ Route::get('/delete/{id}', 'BlogController@destroy');
 
 Auth::routes();
 
+//This routes are provided for comment
+Route::post('/store-comment', 'CommentController@store')->middleware('auth');
+
 
 // UserController routes (auth middleware, so can't access if you're not logged)
 Route::get('/logout', 'UserController@logout');

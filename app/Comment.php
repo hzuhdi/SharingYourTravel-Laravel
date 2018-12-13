@@ -8,7 +8,7 @@ class Comment extends Model
 {
     //
     protected $table = 'comments';
-    protected $fillable = ['content'];
+    protected $fillable = ['user_id', 'blog_id', 'content'];
 
     public function user(){
     	return $this->belongsTo('App\User');

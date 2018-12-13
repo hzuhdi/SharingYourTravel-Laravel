@@ -14,7 +14,7 @@ class Blog extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function blog(){
+    public function comments(){
     	return $this->hasMany('App\Comment');
     }
 }
