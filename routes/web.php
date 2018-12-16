@@ -47,6 +47,7 @@ Route::get('query', 'MyController@search');
 Route::get('/edit/{id}', 'BlogController@edit');
 Route::post('/update/{id}', 'BlogController@update');
 Route::get('/delete/{id}', 'BlogController@destroy');
+Route::get('/exportpdf/{id}', 'BlogController@expToPdf');
 
 Auth::routes();
 

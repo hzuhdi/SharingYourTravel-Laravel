@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
 use App\Services\BlogService;
+use Alert;
+use PDF;
 
 class BlogController extends Controller
 {
@@ -53,7 +55,9 @@ class BlogController extends Controller
             return view("auth.login");
 
         $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        Alert::success('Successful', 'Blog Created Successfully');
         return redirect()->action('MyController@show', $b->id);
+
     }
 
     /**
@@ -95,6 +99,7 @@ class BlogController extends Controller
         // update it
         $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         // redirect to the blog page now that it's updated
+        Alert::success('Successful', 'Blog Updated Successfully');
         return redirect()->action('MyController@show', $update->id);
     }
 
@@ -107,6 +112,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+        alert()->success('Successful','Blog successfully deleted');
         $del = Blog::find($id);
         $del->delete();
 
@@ -118,4 +124,15 @@ class BlogController extends Controller
         $posts = $this->blogService->getLatestPost(3);
         return $posts;
     }
+
+    public function expToPdf(Request $request, $id)
+    {
+        $q = Blog::query();
+        $q->where('id', $id);
+        $datas = $q->get();
+
+        $pdf = PDF::loadView('components.blog_pdf', compact('datas'));
+       return $pdf->download('blog_report_'.date('Y-m-d_H-i-s').'.pdf');
+    }
+
 }

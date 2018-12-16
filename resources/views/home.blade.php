@@ -85,7 +85,9 @@
 
 
         @else
+        <div class="text-center">
         <p>There is no post</p>
+        </div>
 
 
 @endif

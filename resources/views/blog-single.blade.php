@@ -24,13 +24,14 @@
               </div>
               </div>
             </div>
+            <p><a href="{{url('exportpdf', $b->id)}}" onclick="return confirm('Are you sure want to export this post to pdf ? this may take a few moments')" class="btn btn-primary btn-sm">Download as PDF</a></p>
             <hr />
-            
+            <!-- Component for showing comment -->
             @component('comment.comment-single')
               @slot('b', $b);
             @endcomponent
             </div>
-            <!-- Will be showing the author -->
+            <!-- Component for author-->
             @component('comment.authorbox-blog-single')
               @slot('b', $b);
             @endcomponent

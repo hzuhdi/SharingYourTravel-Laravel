@@ -20,6 +20,7 @@
 </head>
 
 <body>
+@include('sweetalert::alert')
 @include('template.header')
 
 	@yield('content')
