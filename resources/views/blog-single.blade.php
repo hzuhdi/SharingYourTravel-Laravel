@@ -15,7 +15,7 @@
                         <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                       </div>
             <div class="post-content-body">
-              <p>{{$b->content}}</p>
+              <p>{!!$b->content!!}</p>
 
             <div class="row mb-5">
               <div class="col-md-12 mb-4 element-animate">

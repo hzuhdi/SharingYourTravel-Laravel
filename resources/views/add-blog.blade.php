@@ -87,15 +87,15 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="content">Content</label>
                       <textarea name="content" id="content" class="form-control " cols="30" rows="8"></textarea>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- Summernote -->
-                  <!-- <div class="row">
+                  <div class="row">
                     <div class="col-md-12 form-group">
                       <textarea id="summernote" name="content"></textarea>
                         <script>
@@ -106,7 +106,7 @@
                           });
                         </script>
                       </div>
-                      </div> -->
+                      </div>
 
 
                   <div class="row">

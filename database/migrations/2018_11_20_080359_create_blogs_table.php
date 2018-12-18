@@ -16,7 +16,7 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('content');
+            $table->longtext('content');
             $table->binary('image')->nullable();
             $table->enum('countries', ['South America', 'North America', 'Europe', 'Middle East', 'Asia']);
             $table->integer('user_id');
