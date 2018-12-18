@@ -70,6 +70,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'password' => Hash::make($data['password']),
             'type' => User::DEFAULT_TYPE,
-        ])->with('success', 'Register Successfull!');
+        ]);
     }
 }
