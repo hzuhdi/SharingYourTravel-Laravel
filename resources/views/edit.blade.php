@@ -21,6 +21,15 @@
 
 @stop
 
+@push('styles')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+@endpush
+
 @extends('template.index')
 @section('content')
 
@@ -74,7 +83,14 @@
                   <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="content">Content</label>
-                      <textarea name="content" id="content" class="form-control " cols="30" rows="8">{{$showEdit->content}}</textarea>
+                      <textarea id="summernote" name="content">{{$showEdit->content}}</textarea>
+                        <script>
+                          $('#summernote').summernote({
+                            placeholder: 'Content',
+                            tabsize: 2,
+                            height: 300
+                          });
+                        </script>
                     </div>
                   </div>
                   <div class="row">

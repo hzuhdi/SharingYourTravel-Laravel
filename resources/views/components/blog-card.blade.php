@@ -12,7 +12,11 @@
         <span class="ml-2"><span class="fa fa-comments"></span> {{$blog->comments->count()}}</span>
       </div>
       <h2>{{$blog->title}}</h2>
-      <p>{!!substr($blog->content,0,50)!!}...</p>
+
+      <p>
+          {!! substr(preg_replace('/<[^>]*>/', "" , preg_replace("/<img[^>]+\>/i", "(image) ", $blog->content)), 0, 50)!!}
+          ...
+      </p>
       @if ($includeControls && Auth::check())
           <a class="btn btn-outline-dark pull-right" href="{{url('edit', $blog->id)}}">Update</a>
           <a class="btn btn-outline-dark pull-left" onclick="return confirm('Are you sure want to delete this post ?')" href="{{url('delete', $blog->id)}}">Delete</a>

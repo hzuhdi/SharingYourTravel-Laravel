@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'type' => 'admin'
         ]);
+        //when seeder is ran, they automatically will put the bob as an admin
         // create other users to populate the db
         factory(User::class, 4)->create();
     }

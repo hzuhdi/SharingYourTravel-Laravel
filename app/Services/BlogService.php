@@ -14,6 +14,64 @@ class BlogService {
     public function create($user, $title, $content, $countries, $image){
         $b = new Blog();
         $b->title = $title;
+        
+        //content will be changed into summernote
+        //$b->content = $content;
+ /*       $detail=$request->summernoteInput;
+
+        $dom = new \domdocument();
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $images = $dom->getelementsbytagname('img');
+
+        foreach($images as $k => $img){
+            $data = $img->getattribute('src');
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+
+            $data = base64_decode($data);
+            $image_name= time().$k.'.png';
+            $path = public_path() .'/'. $image_name;
+
+            file_put_contents($path, $data);
+
+            $img->removeattribute('src');
+            $img->setattribute('src', $image_name);
+        }
+
+        $detail = $dom->savehtml();
+        $summernote = new Summernote;
+        $summernote->content = $detail;
+        $summernote->save();
+            return view('summernote_display',compact('summernote'));*/
+
+
+        //
+
+        //TO-DO fix it
+            
+        /*$dom = new \domdocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+ 
+        $images = $dom->getelementsbytagname('img');
+        foreach($images as $k => $img){
+
+            $data = $img->getattribute('src');
+ 
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+ 
+            $data = base64_decode($data);
+            $image_name= time().$k.'.jpg';
+            $path = public_path() .'/'. $image_name;
+ 
+            file_put_contents($path, $data);
+ 
+            $img->removeattribute('src');
+            $img->setattribute('src', $image_name);
+        }
+        $content = $dom->savehtml();*/
         $b->content = $content;
         $b->countries = $countries;
         if ($image){

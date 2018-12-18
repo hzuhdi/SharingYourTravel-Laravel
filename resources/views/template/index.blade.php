@@ -17,12 +17,21 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--This one is for summernote -->
+    <!-- include libraries(jQuery, bootstrap) -->
+    @stack('styles')
+    @stack('scripts')
+    
+    
+
+    
 </head>
 
 <body>
 @include('sweetalert::alert')
 @include('template.header')
-
+    @yield('assets')
 	@yield('content')
 
 @include('template.footer')
