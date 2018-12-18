@@ -74,9 +74,9 @@
             <div class="sidebar-box">
               <div class="bio text-center">
                 @if (is_null($user->image))
-                <img src="/images/profile.png" alt="Image Placeholder" class="bio img">
+                <img src="/images/default.png" alt="Image Placeholder" class="bio img">
                 @else
-                <img src="{{ $user->image }}" alt="Image Placeholder" class="img-fluid">
+                <img src="/images/{{ $user->image }}" alt="Image Placeholder" class="img-fluid">
                 @endif
                 <div class="bio-body">
                   <h2>{{$user->name}}</h2>

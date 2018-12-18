@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Services\BlogService;
 
 class MyController extends Controller
 {
+
+    public function __construct(BlogService $blogService)
+    {
+        $this->blogService = $blogService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +24,6 @@ class MyController extends Controller
         //
         $blogs = Blog::orderBy('id', 'DESC')->paginate(10);
         return view('home')->with('blogs', $blogs);
-        //return view('home', compact('blogs'));
-
     }
 
     public function about(){
@@ -33,8 +38,29 @@ class MyController extends Controller
         return view('add-blog');
     }
 
-    public function addtest(){
-        return view('addtest2');
+    public function country($country){
+        switch ($country) {
+            case 'asia':
+                $query = "Asia";
+                break;
+            case 'europe':
+                $query = "Europe";
+                break;
+            case 'south-america':
+                $query = "South America";
+                break;
+            case 'north-america':
+                $query = "North America";
+                break;
+            case 'middle-east':
+                $query = "Middle East";
+                break;
+            default:
+                return redirect('/');
+                break;
+        }
+        $blogs = $this->blogService->getBlogsByCountry($query);
+        return view('home')->with('blogs', $blogs)->with('title', $query);
     }
 
     public function search(Request $request)

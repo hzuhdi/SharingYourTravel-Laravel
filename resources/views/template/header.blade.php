@@ -49,16 +49,14 @@
                 <a class="nav-link active" href="/">Home</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Countries</a>
+                <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Countries</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="category.html">Asia</a>
-                  <a class="dropdown-item" href="category.html">Africa</a>
-                  <a class="dropdown-item" href="category.html">Europe</a>
-                  <a class="dropdown-item" href="category.html">Middle East</a>
-                  <a class="dropdown-item" href="category.html">North America</a>
-                  <a class="dropdown-item" href="category.html">South America</a>
+                  <a class="dropdown-item" href="/country/asia">Asia</a>
+                  <a class="dropdown-item" href="/country/europe">Europe</a>
+                  <a class="dropdown-item" href="/country/middle-east">Middle East</a>
+                  <a class="dropdown-item" href="/country/north-america">North America</a>
+                  <a class="dropdown-item" href="/country/south-america">South America</a>
                 </div>
-
               </li>
 
               <li class="nav-item">

@@ -14,43 +14,8 @@
               <div class="col-md-7">
                 <h3>Latest Post</h3>
                 <div class="post-entry-sidebar">
-                  <ul>
-                    <li>
-                      <a href="">
-                        <img src="/images/img_6.jpg" alt="Image placeholder" class="mr-4">
-                        <div class="text">
-                          <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                          <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <img src="/images/img_3.jpg" alt="Image placeholder" class="mr-4">
-                        <div class="text">
-                          <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                          <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <img src="/images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                        <div class="text">
-                          <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                          <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
+                  <ul id="latests-posts">
+
                   </ul>
                 </div>
               </div>
@@ -97,7 +62,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- END footer -->
 
     <!-- Loader -->
-        <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/jquery-migrate-3.0.0.js"></script>
@@ -106,13 +71,34 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/jquery.waypoints.min.js"></script>
     <script src="/js/jquery.stellar.min.js"></script>
-    
-    
+
     @section('js')
 
     @show
 
 
     <script src="/js/main.js"></script>
+    <script>
+        $.get( "/blogs/latests", function( blogs ) {
+            blogs.map( b => {
+                console.log(b);
+                let elem =  `
+                <li>
+                  <a href="">
+                    <img src="/images/${b.image}" alt="Image placeholder" class="mr-4">
+                    <div class="text">
+                      <h4>${b.title}</h4>
+                      <div class="post-meta">
+                        <span class="mr-2">${b.created_at}</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                `;
+                $('#latests-posts').append(elem);
+            })
+
+        });
+    </script>
   </body>
 </html>

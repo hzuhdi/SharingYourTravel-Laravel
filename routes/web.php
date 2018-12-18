@@ -50,8 +50,12 @@ Route::get('query', 'MyController@search');
 Route::get('/edit/{id}', 'BlogController@edit');
 Route::post('/update/{id}', 'BlogController@update');
 Route::get('/delete/{id}', 'BlogController@destroy');
+Route::get('/exportpdf/{id}', 'BlogController@expToPdf');
 
 Auth::routes();
+
+//This routes are provided for comment
+Route::post('/store-comment', 'CommentController@store')->middleware('auth');
 
 
 // UserController routes (auth middleware, so can't access if you're not logged)
@@ -65,3 +69,6 @@ Route::post('/update-profile', 'UserController@update')->middleware('auth');
 //     ->name('admin');
 Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
+Route::get('/blogs/latests', "BlogController@getThreeLatestPosts");
+
+Route::get('/country/{country}', 'MyController@country');
