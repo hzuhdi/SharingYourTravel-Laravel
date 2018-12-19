@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text('content');
             $table->integer('user_id');
             $table->integer('blog_id');
-            $table->integer('reply');
+            $table->integer('reply')->nullable();
             //this will belongs to comment_id
             $table->timestamps();
         });
