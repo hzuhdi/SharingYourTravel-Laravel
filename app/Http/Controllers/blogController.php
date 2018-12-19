@@ -16,27 +16,9 @@ class BlogController extends Controller
     {
         $this->blogService = $blogService;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index_api(){
+        return response()->json(Blog::all());
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,6 +42,16 @@ class BlogController extends Controller
 
     }
 
+    public function create_api(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'countries' => 'required'
+        ]);
+        // TODO when auth is working
+        //$blog = $this->blogService->create();
+    }
+
     /**
      * Display the specified resource.
      *
@@ -70,6 +62,12 @@ class BlogController extends Controller
     {
         $b = Blog::find($id);
         return view('about')->with('b', $b);
+    }
+
+    public function show_api($id)
+    {
+        $b = Blog::find($id);
+        return response()->json($b);
     }
 
     /**
@@ -103,6 +101,13 @@ class BlogController extends Controller
         return redirect()->action('MyController@show', $update->id);
     }
 
+    public function update_api(Request $request, $id)
+    {
+        $update = Blog::where('id', $id)->first();
+        $blog = $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($blog);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -117,6 +122,12 @@ class BlogController extends Controller
         $del->delete();
 
         return redirect()->to('/');
+    }
+
+    public function destroy_api($id){
+        $blog = Blog::find($id);
+        $blog->delete();
+        return response()->json($blog);
     }
 
     public function getThreeLatestPosts(){
