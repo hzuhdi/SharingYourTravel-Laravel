@@ -66,10 +66,8 @@ class BlogController extends Controller
 
     public function show_api($id)
     {
-        $b = Blog::find($id);
-        return $b ? response()->json($b) : response()->json([
-            'message' => "blog with id " . $id . ' not found'
-        ], 404);
+        $b = $this->blogService->getBlogById_api($id);
+        return $b;
     }
 
     /**
@@ -105,16 +103,9 @@ class BlogController extends Controller
 
     public function update_api(Request $request, $id)
     {
-        $update = Blog::where('id', $id)->first();
-        if ($update){
-            $blog = $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
-            return response()->json($blog);
-        }
-        else {
-            return response()->json([
-                'message' => "blog with id " . $id . ' not found'
-            ], 404);
-        }
+        $b = $this->blogService->getBlogById_api($id);
+        $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($b);
     }
 
     /**
@@ -134,16 +125,9 @@ class BlogController extends Controller
     }
 
     public function destroy_api($id){
-        $blog = Blog::find($id);
-        if ($blog){
-            $blog->delete();
-            return response()->json($blog);
-        }
-        else {
-            return response()->json([
-                'message' => "blog with id " . $id . ' not found'
-            ], 404);
-        }
+        $blog = $this->blogService->getBlogById_api($id);
+        $blog->delete();
+        return response()->json($blog);
     }
 
     public function getThreeLatestPosts(){

@@ -35,7 +35,7 @@ class BlogsTest extends TestCase
 
     public function test_should_return_a_blog()
     {
-        $response = $this->json('GET', '/api/blogs/15000000000');
+        $response = $this->json('GET', '/api/blogs/4000');
         $response->assertStatus(404);
 
         $blog = factory(\App\Blog::class)->create([
@@ -68,7 +68,7 @@ class BlogsTest extends TestCase
         $title = "BONJOUR";
         $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
         $response->assertStatus(200)->assertJson([
-                'title' => $title,
+                'title' => $title
         ]);
 
         $this->assertDatabaseHas('blogs', [
