@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
+use App\Blog;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -16,6 +19,9 @@ class AdminController extends Controller
 
     public function admin()
     {
-    	return view('admin/index');
+        $blog = Blog::get();
+        $user = User::get();
+        $comment = Comment::get();
+    	return view('admin/index', compact('blog', 'user', 'comment'));
     }
 }
