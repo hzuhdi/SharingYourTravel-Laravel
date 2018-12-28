@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="/admin/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="/admin/images/favicon.png" />
+  @stack('styles')
+  @stack('scripts')
+  
 </head>
 
 <body>
@@ -30,24 +33,20 @@
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="/admin/#" data-toggle="dropdown" aria-expanded="false">
+          @if(Auth::user())
+          <li class="nav-item d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Log Out</span>
+            </a>
+          </li>
+          @endif
+          <li class="nav-item d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Hello, {{Auth::user()->name}} - Admin!</span>
               <img class="img-xs rounded-circle" src="admin/images/faces/face1.jpg" alt="Profile image">
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item">
-                Edit Profile
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
           </li>
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
       </div>
     </nav>
   </div>
@@ -55,8 +54,7 @@
 @include('admin.layout.sidebar')
     @yield('assets')
     @yield('content')
-@section('js')
-@show
+
 
   <script src="admin/vendors/js/vendor.bundle.base.js"></script>
   <script src="admin/vendors/js/vendor.bundle.addons.js"></script>
@@ -69,6 +67,10 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="admin/js/dashboard.js"></script>
+  @section('js')
+
+  @show  
+
   <!-- End custom js for this page-->
 </body>
 

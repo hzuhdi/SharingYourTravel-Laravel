@@ -69,6 +69,25 @@ Route::post('/update-profile', 'UserController@update')->middleware('auth');
 //     ->name('admin');
 Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
+Route::resource('admin', 'AdminController');
+Route::get('/admin_panel_user', 'AdminController@user')->name('admin-user');
+Route::get('/admin_panel_blog', 'AdminController@blog')->name('admin-blog');
+Route::get('/admin_panel_comment', 'AdminController@comment')->name('admin-comment');
+Route::get('/admin_panel_report', 'AdminController@report')->name('report');
+//Handling User
+Route::get('/user-delete/{id}', 'AdminController@userDelete')->name('user-delete');
+Route::get('/user-edit/{id}', 'AdminController@userEdit')->name('user-edit');
+Route::post('/user-update/{id}', 'AdminController@userUpdate')->name('user-update');
+//Handling Blog
+Route::get('/blog-delete/{id}', 'AdminController@blogDelete')->name('blog-delete');
+Route::get('/blog-edit/{id}', 'AdminController@blogEdit')->name('blog-edit');
+Route::post('/blog-update/{id}', 'AdminController@blogUpdate')->name('blog-update');
+//Handling Comment
+Route::get('/comment-delete/{id}', 'AdminController@commentDelete')->name('comment-delete');
+Route::get('/comment-edit/{id}', 'AdminController@commentEdit')->name('comment-edit');
+Route::post('/comment-update/{id}', 'AdminController@commentUpdate')->name('comment-update');
+
+
 Route::get('/blogs/latests', "BlogController@getThreeLatestPosts");
 
 Route::get('/country/{country}', 'MyController@country');

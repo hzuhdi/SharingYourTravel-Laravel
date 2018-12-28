@@ -24,6 +24,26 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-laporan" aria-expanded="false" aria-controls="ui-laporan">
+              <i class="menu-icon mdi mdi-table"></i>
+              <span class="menu-title">Report</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-laporan">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('report/user')}}">User Report</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{url('report/blog')}}">Blog Report</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('report/comment')}}">Comment Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link " data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Manage Data</span>
@@ -32,13 +52,13 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="">User Data</a>
+                  <a class="nav-link" href="{{route('admin-user')}}">User Data</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">Blog Data</a>
+                  <a class="nav-link" href="/admin_panel_blog">Blog Data</a>
                 </li>
                  <li class="nav-item">
-                  <a class="nav-link">Comment Data</a>
+                  <a class="nav-link" href="/admin_panel_comment">Comment Data</a>
                 </li>
               </ul>
             </div>
