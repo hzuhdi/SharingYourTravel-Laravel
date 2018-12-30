@@ -7,16 +7,26 @@ use App\Comment;
 use App\Blog;
 use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Services\UserService;
+use App\Services\BlogService;
+use App\Services\CommentService;
+use PDF;
+
+
+
 
 
 class AdminController extends Controller
 {
     //
 
-    public function __construct()
+    public function __construct(UserService $userService, BlogService $blogService, CommentService $commentService)
     {
     	$this->middleware('auth');
         $this->middleware('is_admin');
+        $this->userService = $userService;
+        $this->blogService = $blogService;
+        $this->commentService = $commentService;
     }
 
     public function admin()
@@ -45,12 +55,25 @@ class AdminController extends Controller
         return view('admin/comment/comment', compact('comment'));
     }
 
-    public function report()
-    {
-        $blog = Blog::get();
+    public function reportUser(){
+        return view('admin/report/user', compact('user'));
+    }
+
+    public function reportBlog(){
+        return view('admin/report/blog', compact('blog'));
+    }
+
+
+    public function reportUserPdf(){
         $user = User::get();
-        $comment = Comment::get();
-        return view('admin/report/report', compact('blog', 'user', 'comment'));
+        $pdf = PDF::loadView('admin.report.user_pdf', compact('user'));
+        return $pdf->download('user_report_'.date('Y-m-d_H-i-s').'.pdf');
+    }
+
+    public function reportBlogPdf(){
+        $blog = Blog::get();
+        $pdf = PDF::loadView('admin.report.blog_pdf', compact('blog'));
+        return $pdf->download('blog_report_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
     public function userDelete($id)
@@ -95,15 +118,33 @@ class AdminController extends Controller
     public function userUpdate(Request $request, $id)
     {
 
+        $update = User::where('id', $id)->first();
+        //update it
+        $this->userService->update($update, $request['email'], $request['name'], $request['password'], $request['bio'], $request->file('image'));
+        //For user type
+        $this->userService->update_type($update, $request['type']);
+        alert()->success('Successful','User has been changed!');
+        return redirect()->route('admin-user');
     }
 
     public function blogUpdate(Request $request, $id)
     {
-
+        $update = Blog::where('id', $id)->first();
+        //update it
+        $this->blogService->update($update, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        //redirect to profile
+        Alert::success('Successful', 'Blog has been changed');
+        return redirect()->route('admin-blog');
     }
 
     public function commentUpdate(Request $request, $id)
     {
+        $update = Comment::where('id', $id)->first();
+        //update it
+        $this->commentService->update($update, $request['email']);
+        
+        alert()->success('Successful','Comment has been changed!');
+        return redirect()->route('admin-comment');
 
     }
 }

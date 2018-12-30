@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="/admin/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="/admin/images/favicon.png" />
+
   @stack('styles')
-  @stack('scripts')
+  @stack('custom-scripts')
   
 </head>
 
@@ -43,7 +44,7 @@
           <li class="nav-item d-none d-xl-inline-block">
             <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Hello, {{Auth::user()->name}} - Admin!</span>
-              <img class="img-xs rounded-circle" src="admin/images/faces/face1.jpg" alt="Profile image">
+              <img class="img-xs rounded-circle" src="/admin/images/faces/face1.jpg" alt="Profile image">
             </a>
           </li>
         </ul>
@@ -51,25 +52,31 @@
     </nav>
   </div>
 
+<div class="container-fluid page-body-wrapper">
+@include('sweetalert::alert')
 @include('admin.layout.sidebar')
     @yield('assets')
     @yield('content')
+</div>
 
 
-  <script src="admin/vendors/js/vendor.bundle.base.js"></script>
-  <script src="admin/vendors/js/vendor.bundle.addons.js"></script>
+  @section('js')
+
+  @show
+
+  <script src="/admin/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/admin/vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="admin/js/off-canvas.js"></script>
-  <script src="admin/js/misc.js"></script>
+  <script src="/admin/js/off-canvas.js"></script>
+  <script src="/admin/js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="admin/js/dashboard.js"></script>
-  @section('js')
+  <script src="/admin/js/dashboard.js"></script> 
 
-  @show  
+
 
   <!-- End custom js for this page-->
 </body>

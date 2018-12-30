@@ -67,13 +67,23 @@ Route::post('/update-profile', 'UserController@update')->middleware('auth');
 // Route for admin, I created a middleware to check whether the user is admin or not
 // Route::get('/admin', 'AdminController@admin')->middleware('is_admin')
 //     ->name('admin');
+//ADMIN
 Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
 Route::resource('admin', 'AdminController');
 Route::get('/admin_panel_user', 'AdminController@user')->name('admin-user');
 Route::get('/admin_panel_blog', 'AdminController@blog')->name('admin-blog');
 Route::get('/admin_panel_comment', 'AdminController@comment')->name('admin-comment');
-Route::get('/admin_panel_report', 'AdminController@report')->name('report');
+//Handling report
+Route::get('/report/user', 'AdminController@reportUser')->name('report-user');
+Route::get('/report/blog', 'AdminController@reportBlog')->name('report-blog');
+//Export PDF
+Route::get('/report/user/pdf', 'AdminController@reportUserPdf')->name('report-user-pdf');
+Route::get('/report/blog/pdf', 'AdminController@reportBlogPdf')->name('report-blog-pdf');
+//Export Excel
+Route::get('/report/user/exc', 'AdminController@reportUserExc')->name('report-user-exc');
+Route::get('/report/blog/exc', 'AdminController@reportBlogExc')->name('report-blog-exc');
+
 //Handling User
 Route::get('/user-delete/{id}', 'AdminController@userDelete')->name('user-delete');
 Route::get('/user-edit/{id}', 'AdminController@userEdit')->name('user-edit');
@@ -86,6 +96,9 @@ Route::post('/blog-update/{id}', 'AdminController@blogUpdate')->name('blog-updat
 Route::get('/comment-delete/{id}', 'AdminController@commentDelete')->name('comment-delete');
 Route::get('/comment-edit/{id}', 'AdminController@commentEdit')->name('comment-edit');
 Route::post('/comment-update/{id}', 'AdminController@commentUpdate')->name('comment-update');
+//
+//
+//
 
 
 Route::get('/blogs/latests', "BlogController@getThreeLatestPosts");

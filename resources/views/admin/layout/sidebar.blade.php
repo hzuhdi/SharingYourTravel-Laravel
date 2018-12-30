@@ -1,11 +1,10 @@
-<div class="container-fluid page-body-wrapper">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="admin/images/faces/face1.jpg" alt="profile image">
+                  <img src="/admin/images/faces/face1.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">{{Auth::user()->name}}</p>
@@ -32,13 +31,10 @@
             <div class="collapse" id="ui-laporan">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('report/user')}}">User Report</a>
+                  <a class="nav-link" href="{{route('report-user')}}">User Report</a>
                 </li>
                  <li class="nav-item">
-                  <a class="nav-link" href="{{url('report/blog')}}">Blog Report</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{url('report/comment')}}">Comment Report</a>
+                  <a class="nav-link" href="{{route('report-blog')}}">Blog Report</a>
                 </li>
               </ul>
             </div>
