@@ -11,6 +11,9 @@ use App\Services\UserService;
 use App\Services\BlogService;
 use App\Services\CommentService;
 use PDF;
+use Excel;
+use App\Exports\UsersExport;
+use App\Exports\BlogsExport;
 
 
 
@@ -147,4 +150,19 @@ class AdminController extends Controller
         return redirect()->route('admin-comment');
 
     }
+
+    public function reportUserExc(Request $request)
+    {
+        //We will call export class
+        //From App/Exports
+        return Excel::download(new UsersExport, 'users.xlsx');
+
+    }
+
+    public function reportBlogExc(Request $request)
+    {
+       return Excel::download(new BlogsExport, 'blogs.xlsx');
+
+    }
+
 }
