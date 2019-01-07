@@ -70,6 +70,7 @@ Route::post('/update-profile', 'UserController@update')->middleware('auth');
 //ADMIN
 Route::get('/admin_panel', 'AdminController@admin')->name('admin');
 Route::get('thisisadmin', "MyController@admin");
+Route::get('/logout-admin', 'AdminController@logout');
 Route::resource('admin', 'AdminController');
 Route::get('/admin_panel_user', 'AdminController@user')->name('admin-user');
 Route::get('/admin_panel_blog', 'AdminController@blog')->name('admin-blog');

@@ -14,6 +14,7 @@ use PDF;
 use Excel;
 use App\Exports\UsersExport;
 use App\Exports\BlogsExport;
+use Auth;
 
 
 
@@ -38,6 +39,11 @@ class AdminController extends Controller
         $user = User::get();
         $comment = Comment::get();
     	return view('admin/index', compact('blog', 'user', 'comment'));
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->action('MyController@index');
     }
 
     public function user()

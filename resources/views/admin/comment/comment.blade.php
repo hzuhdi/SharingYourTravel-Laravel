@@ -62,7 +62,7 @@
                             {{$c->id}}
                           </td>
                           <td>
-                            {!! substr($c->email, 0, 10) !!}
+                            {!! substr($c->content, 0, 10) !!}
                           </td>
                           <td>
                             {{$c->user->id}}

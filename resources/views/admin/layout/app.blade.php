@@ -36,7 +36,7 @@
         <ul class="navbar-nav navbar-nav-right">
           @if(Auth::user())
           <li class="nav-item d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" href="/logout-admin" >
               <span class="profile-text">Log Out</span>
             </a>
           </li>
