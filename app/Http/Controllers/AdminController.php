@@ -81,14 +81,28 @@ class AdminController extends Controller
 
     public function userDelete($id)
     {
-        User::find($id)->delete();
-        alert()->success('Success.','Your Data has been deleted!');
+        $del = User::find($id);
+        if($del->blogs()){
+            $del->blogs()->delete();
+        }
+        if($del->comments()){
+            $del->comments()->delete();
+        }
+        //relation
+        $del->delete();
+
+        //Deleting the user
+        alert()->success('Success.','Your User has been deleted!');
         return redirect()->route('admin');
     }
 
     public function blogDelete($id)
     {
-        Blog::find($id)->delete();
+        $del = Blog::find($id);
+        $del->comments()->delete();
+        //relation
+        $del->delete();
+        //Deleting for user
         alert()->success('Success.','Your Data has been deleted!');
         return redirect()->route('admin');
     }

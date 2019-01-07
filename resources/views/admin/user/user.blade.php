@@ -91,12 +91,13 @@
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                             <a class="dropdown-item" href="{{route('user-edit', $u->id)}}"> Edit </a>
-                            <form action="{{ route('user-delete', $u->id) }}" class="pull-left"  method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="dropdown-item" onclick="return confirm('Are you sure want to delete this data?')"> Delete
+                            <<!-- form action="{{ route('user-delete', $u->id) }}" class="pull-left"  method="post">
+                            {!! csrf_field() !!}
+                            {{ method_field('POST') }}
+                            <button class="dropdown-item" onclick="return confirm('Are you sure want to delete this data?')" href="{{route('user-delete', $u->id)}}"> Delete
                             </button>
-                          </form>
+                          </form> -->
+                          <a class="dropdown-item" onclick="return confirm('Are you sure want to delete this user ?')" href="{{route('user-delete', $u->id)}}">Delete</a>
                           </div>
                           </div>
                           </td>
