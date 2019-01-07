@@ -26,4 +26,10 @@ class UserService {
         $user->update();
         return $user;
     }
+
+    public function update_type($user, $type){
+        $user->type = $type ? $type : $user->type;
+        $user->update();
+        return $user;
+    }
 }
