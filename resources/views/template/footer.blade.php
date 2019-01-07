@@ -2,7 +2,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-4">
-            <h3>Paragraph</h3>
+            <h3>About Us</h3>
             <p>
               <img src="/images/img_1.jpg" alt="Image placeholder" class="img-fluid">
             </p>
@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Hafizh & Thibault
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </div>
         </div>
