@@ -1,0 +1,71 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SYT - API Documentation",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/login": {
+            "post": {
+                "summary": "Retrieve a JWT token",
+                "operationId": "getCustomerRates",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "login email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "unencrypted password (should be used over https)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token has been retrieved"
+                    },
+                    "401": {
+                        "description": "bad credentials"
+                    }
+                }
+            }
+        },
+        "/api/self": {
+            "post": {
+                "summary": "Return the user associated with the given JWT (headers)",
+                "operationId": "getCustomerRates",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "login email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "unencrypted password (should be used over https)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token has been retrieved"
+                    },
+                    "401": {
+                        "description": "bad credentials"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
