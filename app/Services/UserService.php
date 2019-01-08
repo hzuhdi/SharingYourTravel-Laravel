@@ -5,6 +5,7 @@ use App\User;
 use App\Exceptions\BadCredentialsApi;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Hash;
 
 class UserService {
 
@@ -27,7 +28,7 @@ class UserService {
     public function update($user, $email, $name, $password, $bio, $image){
         $user->email = $email ? $email : $user->email;
         $user->name = $name ? $name : $user->name;
-        $user->password = $password ? $password : $user->password;
+        $user->password = $password ? Hash::make($password) : $user->password;
         $user->bio = $bio ? $bio : $user->bio;
         if ($image){
             if ($user->image)
