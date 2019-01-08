@@ -30,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 @endpush
 
-@extends('template.index')
+@extends('admin.layout.app')
 @section('content')
 
 

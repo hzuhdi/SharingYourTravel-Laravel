@@ -1862,10 +1862,10 @@ blockquote p {
           <div class="col-md-12 col-lg-8 main-content">
             <div class="post-meta">
                         <span class="category">{{$data->countries}}</span>
-                        <span class="mr-2">{{$data->created_at}}</span> &bullet;
+                        <span class="mr-2">{{$data->created_at}}</span>
                       </div>
             <div class="post-content-body">
-              <p>{{$data->content}}</p>
+              <p>{!!$data->content!!}</p>
 
             <div class="row mb-5">
               <div class="col-md-12 mb-4 element-animate">

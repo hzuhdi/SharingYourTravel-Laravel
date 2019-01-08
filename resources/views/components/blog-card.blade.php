@@ -8,10 +8,10 @@
     <div class="blog-content-body">
       <div class="post-meta">
         <span class="category">{{$blog->countries}}</span>
-        <span class="mr-2">{{$blog->created_at}}</span> &bullet;
+        <span class="mr-2">{{$blog->created_at->format('d.m.Y')}}</span> &bullet;
         <span class="ml-2"><span class="fa fa-comments"></span> {{$blog->comments->count()}}</span>
       </div>
-      <h2>{{$blog->title}}</h2>
+      <h2>{!! substr($blog->title, 0, 32) !!}</h2>
 
       <p>
           {!! substr(preg_replace('/<[^>]*>/', "" , preg_replace("/<img[^>]+\>/i", "(image) ", $blog->content)), 0, 50)!!}

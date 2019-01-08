@@ -8,7 +8,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject as JWT;
 
 class User extends Authenticable implements JWT
 {
-
 	const ADMIN_TYPE = 'admin';
 	const DEFAULT_TYPE = 'default';
 

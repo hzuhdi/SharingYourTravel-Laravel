@@ -23,4 +23,10 @@ class CommentService {
 		return $c;
 	}
 
+	public function update($comment, $content){
+        $comment->content = $content ? $content : $comment->content;
+        $comment->update();
+        return $blog;
+    }
+
    }
