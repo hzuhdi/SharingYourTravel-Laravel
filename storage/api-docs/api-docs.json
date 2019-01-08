@@ -6,6 +6,76 @@
     },
     "basePath": "/",
     "paths": {
+        "/api/users": {
+            "get": {
+                "summary": "[PUBLIC] Get all users",
+                "responses": {
+                    "200": {
+                        "description": "all users are retrieved"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "put": {
+                "summary": "[OWNER OR ADMIN] - update a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "new title",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "new content",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countries",
+                        "in": "query",
+                        "description": "new country",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "South America",
+                            "North America",
+                            "Europe",
+                            "Middle East",
+                            "Asia"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the blog is retrieved"
+                    },
+                    "404": {
+                        "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    }
+                }
+            }
+        },
         "/api/login": {
             "post": {
                 "summary": "[PUBLIC] Retrieve a JWT token",
@@ -195,13 +265,32 @@
                 }
             },
             "delete": {
-                "summary": "[PUBLIC] - delete a blog",
+                "summary": "[OWNER OR ADMIN] - delete a blog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "blog id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "the blog is deleted from db"
                     },
                     "404": {
                         "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
                     }
                 }
             }
