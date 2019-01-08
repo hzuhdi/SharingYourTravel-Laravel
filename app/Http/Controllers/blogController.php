@@ -36,6 +36,7 @@ class BlogController extends Controller
 
         if (!$user = Auth::user())
             return view("auth.login");
+        //Intervention Task will be defined in Image Service
 
         $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         Alert::success('Successful', 'Blog Created Successfully');

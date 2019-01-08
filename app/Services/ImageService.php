@@ -1,7 +1,9 @@
 <?php
 
-use Intervention\Image\ImageManagerStatic as Image;
 namespace App\Services;
+
+use Image;
+
 
 
 class ImageService {
@@ -15,11 +17,25 @@ class ImageService {
         /*$file_from_request->move(public_path()."/images/", $filename);*/
 
         /*TO DO up here to use intervention to resizing the image*/
+        //Intervention Task
+/*        $myImage = $file_from_request;
+        $thumbnailImage = Image::make($myImage);
+        $thumbnailPath = public_path().'/thumbnail/';
+        $thumbnailImage->resize(300,200);
+        $thumbnailImage->save($thumbnailPath.time().$myImage->getClientOriginalName());*/
 
-
+        //added
+        $myImage = Image::make($file_from_request);
+        $myImage->resize(800,600);
         $filename = $file_from_request->getClientOriginalName();
+        $myImage->save(public_path()."/images/".$filename);
+
+        //$myImage->save($originalPath.time().$file_from_request->getClientOriginalName());
+        //
+
+        /*$filename = $file_from_request->getClientOriginalName();
         $filename = time() . $filename;
-        $file_from_request->move(public_path()."/images/", $filename);
+        $file_from_request->move(public_path()."/images/", $filename);*/
         //$file_from_request->resize(300, 300);
         return $filename;
     }

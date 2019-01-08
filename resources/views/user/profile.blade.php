@@ -51,6 +51,7 @@
                             @endcomponent
                     @endforeach
                     </div>
+                    <br />
                 @else
                     <span class="text-danger py-sm">Oh nooooo... you don't have any blog post <i class="fa fa-frown-o"></i></span><br />
                     <a class="btn btn-outline-danger" href="/add">click here to share your travel story</a>
@@ -62,39 +63,33 @@
           <!-- END main-content -->
 
           <div class="col-md-12 col-lg-4 sidebar">
-            <div class="sidebar-box search-form-wrap">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon fa fa-search"></span>
-                  <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div>
-            <!-- END sidebar-box -->
-            <div class="sidebar-box">
+          <div class="sidebar-box">
+          <h3 class="text-center">Profile</h3>
               <div class="bio text-center">
-                @if (is_null($user->image))
-                <img src="/images/default.png" alt="Image Placeholder" class="bio img">
+                @if(is_null($user->image))
+                <img src="/images/profile.png" alt="Image Placeholder" class="img-fluid" style="border-radius: 50%; width: 100px; margin-top: 10px;">
                 @else
-                <img src="/images/{{ $user->image }}" alt="Image Placeholder" class="img-fluid">
+                <img src="/images/{{ $b->user->image }}" alt="Image Placeholder" class="img-fluid" style="border-radius: 50%; width: 100px; margin-top: 10px;">
                 @endif
                 <div class="bio-body">
-                  <h2>{{$user->name}}</h2>
-                  <h7>{{$user->email}}</h7>
-                  <p>{{$user->bio}}</p>
-                  <p><a href="/edit-profile" class="btn btn-primary btn-sm">Edit Profile</a></p>
-                  <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                  <h2>{{ $user->name }}</h2>
+                  @if (is_null($user->bio))
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae</p>
+                  @else
+                    <p>{{ $b->user->bio }}</p>
+                  @endif
+                    <p><a href="#" class="btn btn-primary btn-sm">Subscribe</a></p>
+                    <p class="social">
+                      <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+                      <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+                      <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+                      <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
                   </p>
                 </div>
               </div>
             </div>
-            <!-- END sidebar-box -->
-          <!-- END sidebar -->
         </div>
+
       </div>
     </section>
 
