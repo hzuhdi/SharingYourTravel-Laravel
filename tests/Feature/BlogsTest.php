@@ -71,6 +71,17 @@ class BlogsTest extends TestCase
         ]);
 
         $title = "BONJOUR";
+        // with no user
+        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response->assertStatus(401);
+
+        // with non owner user
+        $random_user = factory(\App\User::class)->create();
+        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response->assertStatus(401);
+
+        // with admin
+        $admin = factory(\App\User::class)->create(['type' => 'admin']);
         $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
         $response->assertStatus(200)->assertJson([
                 'title' => $title
@@ -78,6 +89,16 @@ class BlogsTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'title' => $title
+        ]);
+
+        // with owner
+        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title . $title]);
+        $response->assertStatus(200)->assertJson([
+                'title' => $title . $title
+        ]);
+
+        $this->assertDatabaseHas('blogs', [
+            'title' => $title . $title
         ]);
     }
 
