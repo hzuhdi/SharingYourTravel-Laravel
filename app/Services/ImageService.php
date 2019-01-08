@@ -26,7 +26,18 @@ class ImageService {
 
         //added
         $myImage = Image::make($file_from_request);
+        $watermark = Image::make(public_path('/images/watermark2.png'));
         $myImage->resize(800,600);
+        $watermarkSize = $myImage->width() - 20;
+        $watermarkSize = $myImage->height() / 2;
+        $resizePercentage = 70;//70% less then an actual image (play with this value)
+        $watermarkSize = round($myImage->width() * ((100 - $resizePercentage) / 100), 2); //watermark will be $resizePercentage less then the actual width of the image
+
+        $watermark->resize($watermarkSize, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $myImage->insert($watermark, 'center');
+
         $filename = $file_from_request->getClientOriginalName();
         $myImage->save(public_path()."/images/".$filename);
 
