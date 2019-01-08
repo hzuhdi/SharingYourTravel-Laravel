@@ -20,8 +20,7 @@ class UserController extends Controller
     /**
      * @SWG\POST(
      *   path="/api/login",
-     *   summary="Retrieve a JWT token",
-     *   operationId="getCustomerRates",
+     *   summary="[PUBLIC] Retrieve a JWT token",
      *   @SWG\Parameter(
      *     name="email",
      *     in="query",
@@ -57,26 +56,18 @@ class UserController extends Controller
     }
 
     /**
-     * @SWG\POST(
+     * @SWG\GET(
      *   path="/api/self",
-     *   summary="Return the user associated with the given JWT (headers)",
-     *   operationId="getCustomerRates",
+     *   summary="[USER] Return the user associated with the given JWT (headers)",
      *   @SWG\Parameter(
-     *     name="email",
-     *     in="query",
-     *     description="login email",
-     *     required=true,
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token_here",
+     *     required=false,
      *     type="string"
      *   ),
-     *   @SWG\Parameter(
-     *     name="password",
-     *     in="query",
-     *     description="unencrypted password (should be used over https)",
-     *     required=true,
-     *     type="string"
-     *   ),
-     *   @SWG\Response(response=200, description="token has been retrieved"),
-     *   @SWG\Response(response=401, description="bad credentials")
+     *   @SWG\Response(response=200, description="user is retrieved"),
+     *   @SWG\Response(response=401, description="the token is not valid")
      * )
      *
      */

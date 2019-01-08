@@ -25,6 +25,11 @@ the webserver is now running in development mode on the port 8000 of your local 
 ### useful commands
 - ```php artisan migrate:fresh --seed``` will drop current database, create the updated schema, and populate it with random data to work with
 
+### API usage
+You can find the documentation of the API [here](http://127.0.0.1:8000/api/documentation)
+The authentication is done using Json Web Token (JWT). You need to login using the ```/api/login``` route to retrieve your token.
+Then, you have to submit your token either in query parameter ```token=yourtoken``` or headers ```Authorization: Bearer yourtoken```
+
 ### testing
 To run the tests, type this command from the root directory: ```./vendor/bin/phpunit``` <br/>
 Before running your tests, you need to do these steps once:
