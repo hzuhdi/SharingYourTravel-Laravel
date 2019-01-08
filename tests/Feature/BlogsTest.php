@@ -77,21 +77,17 @@ class BlogsTest extends TestCase
 
         // with non owner user
         $random_user = factory(\App\User::class)->create();
-        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $token = JWTAuth::fromUser($random_user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
         $response->assertStatus(401);
 
-        // with admin
-        $admin = factory(\App\User::class)->create(['type' => 'admin']);
-        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
-        $response->assertStatus(200)->assertJson([
-                'title' => $title
-        ]);
-
-        $this->assertDatabaseHas('blogs', [
-            'title' => $title
-        ]);
-
         // with owner
+        $token = JWTAuth::fromUser($blog->user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
         $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title . $title]);
         $response->assertStatus(200)->assertJson([
                 'title' => $title . $title
@@ -99,6 +95,20 @@ class BlogsTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'title' => $title . $title
+        ]);
+
+        // with admin
+        $admin = factory(\App\User::class)->create(['type' => 'admin']);
+        $token = JWTAuth::fromUser($admin);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response->assertStatus(200)->assertJson([
+                'title' => $title
+        ]);
+
+        $this->assertDatabaseHas('blogs', [
+            'title' => $title
         ]);
     }
 

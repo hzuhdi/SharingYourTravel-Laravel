@@ -137,12 +137,19 @@
                 }
             },
             "put": {
-                "summary": "[PUBLIC] - update a blog",
+                "summary": "[OWNER OR ADMIN] - update a blog",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "description": "blog id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
                         "required": true,
                         "type": "string"
                     },
@@ -181,6 +188,9 @@
                     },
                     "404": {
                         "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
                     }
                 }
             },

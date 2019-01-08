@@ -96,7 +96,7 @@ class BlogController extends Controller
             'content' => 'required',
             'countries' => 'required'
         ]);
-        $user = $this->userService->getAPIUser($request);
+        $user = $this->userService->getAPIUser();
         $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         return response()->json($b);
     }
@@ -169,11 +169,18 @@ class BlogController extends Controller
     /**
      * @SWG\PUT(
      *   path="/api/blogs/{id}",
-     *   summary="[PUBLIC] - update a blog",
+     *   summary="[OWNER OR ADMIN] - update a blog",
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
      *     description="blog id",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token",
      *     required=true,
      *     type="string"
      *    ),
@@ -200,13 +207,16 @@ class BlogController extends Controller
      *     type="string"
      *    ),
      *   @SWG\Response(response=200, description="the blog is retrieved"),
-     *   @SWG\Response(response=404, description="blog not found")
+     *   @SWG\Response(response=404, description="blog not found"),
+     *   @SWG\Response(response=401, description="unauthorized")
      * )
      *
      */
     public function update_api(Request $request, $id)
     {
         $b = $this->blogService->getBlogById_api($id);
+        $user = $this->userService->getAPIUser();
+        $this->userService->checkRightsOnBlog($user, $b);
         $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         return response()->json($b);
     }
