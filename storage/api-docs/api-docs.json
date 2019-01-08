@@ -1,0 +1,300 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SYT - API Documentation",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/users": {
+            "get": {
+                "summary": "[PUBLIC] Get all users",
+                "responses": {
+                    "200": {
+                        "description": "all users are retrieved"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "put": {
+                "summary": "[OWNER OR ADMIN] - update a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "new title",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "new content",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countries",
+                        "in": "query",
+                        "description": "new country",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "South America",
+                            "North America",
+                            "Europe",
+                            "Middle East",
+                            "Asia"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the blog is retrieved"
+                    },
+                    "404": {
+                        "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "summary": "[PUBLIC] Retrieve a JWT token",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "login email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "unencrypted password (should be used over https)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token has been retrieved"
+                    },
+                    "401": {
+                        "description": "bad credentials"
+                    }
+                }
+            }
+        },
+        "/api/self": {
+            "get": {
+                "summary": "[USER] Return the user associated with the given JWT (headers)",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token_here",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "user is retrieved"
+                    },
+                    "401": {
+                        "description": "the token is not valid"
+                    }
+                }
+            }
+        },
+        "/api/blogs": {
+            "get": {
+                "summary": "[PUBLIC] Get all blogs",
+                "responses": {
+                    "200": {
+                        "description": "all blogs are retrieved"
+                    }
+                }
+            },
+            "post": {
+                "summary": "[USER] Create a blog",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "blog title",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "blog content",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countries",
+                        "in": "query",
+                        "description": "country for the blog",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "South America",
+                            "North America",
+                            "Europe",
+                            "Middle East",
+                            "Asia"
+                        ]
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token_here",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "the token is not valid"
+                    },
+                    "200": {
+                        "description": "all blogs are retrieved"
+                    }
+                }
+            }
+        },
+        "/api/blogs/{id}": {
+            "get": {
+                "summary": "[PUBLIC] get a single blog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "blog id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the blog is retrieved"
+                    },
+                    "404": {
+                        "description": "blog not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "[OWNER OR ADMIN] - update a blog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "blog id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "new title",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "new content",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "countries",
+                        "in": "query",
+                        "description": "new country",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "South America",
+                            "North America",
+                            "Europe",
+                            "Middle East",
+                            "Asia"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the blog is retrieved"
+                    },
+                    "404": {
+                        "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "[OWNER OR ADMIN] - delete a blog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "blog id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer your_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the blog is deleted from db"
+                    },
+                    "404": {
+                        "description": "blog not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

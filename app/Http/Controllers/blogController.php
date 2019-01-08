@@ -18,6 +18,15 @@ class BlogController extends Controller
         $this->blogService = $blogService;
         $this->userService = $userService;
     }
+
+    /**
+     * @SWG\GET(
+     *   path="/api/blogs",
+     *   summary="[PUBLIC] Get all blogs",
+     *   @SWG\Response(response=200, description="all blogs are retrieved")
+     * )
+     *
+     */
     public function index_api(){
         return response()->json(Blog::all());
     }
@@ -44,13 +53,51 @@ class BlogController extends Controller
 
     }
 
+    /**
+     * @SWG\POST(
+     *   path="/api/blogs",
+     *   summary="[USER] Create a blog",
+     *   @SWG\Parameter(
+     *     name="title",
+     *     in="query",
+     *     description="blog title",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="content",
+     *     in="query",
+     *     description="blog content",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="countries",
+     *     in="query",
+     *     description="country for the blog",
+     *     required=true,
+     *     enum={"South America", "North America", "Europe", "Middle East", "Asia"},
+     *     type="string"
+     *   ),
+     *  @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token_here",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=401, description="the token is not valid"),
+     *   @SWG\Response(response=200, description="all blogs are retrieved")
+     * )
+     *
+     */
     public function create_api(Request $request){
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
             'countries' => 'required'
         ]);
-        $user = $this->userService->getAPIUser($request);
+        $user = $this->userService->getAPIUser();
         $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         return response()->json($b);
     }
@@ -67,6 +114,22 @@ class BlogController extends Controller
         return view('about')->with('b', $b);
     }
 
+    /**
+     * @SWG\GET(
+     *   path="/api/blogs/{id}",
+     *   summary="[PUBLIC] get a single blog",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="blog id",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *   @SWG\Response(response=200, description="the blog is retrieved"),
+     *   @SWG\Response(response=404, description="blog not found")
+     * )
+     *
+     */
     public function show_api($id)
     {
         $b = $this->blogService->getBlogById_api($id);
@@ -104,9 +167,57 @@ class BlogController extends Controller
         return redirect()->action('MyController@show', $update->id);
     }
 
+    /**
+     * @SWG\PUT(
+     *   path="/api/blogs/{id}",
+     *   summary="[OWNER OR ADMIN] - update a blog",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="blog id",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="title",
+     *     in="query",
+     *     description="new title",
+     *     required=false,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="content",
+     *     in="query",
+     *     description="new content",
+     *     required=false,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="countries",
+     *     in="query",
+     *     description="new country",
+     *     required=false,
+     *     enum={"South America", "North America", "Europe", "Middle East", "Asia"},
+     *     type="string"
+     *    ),
+     *   @SWG\Response(response=200, description="the blog is retrieved"),
+     *   @SWG\Response(response=404, description="blog not found"),
+     *   @SWG\Response(response=401, description="unauthorized")
+     * )
+     *
+     */
     public function update_api(Request $request, $id)
     {
         $b = $this->blogService->getBlogById_api($id);
+        $user = $this->userService->getAPIUser();
+        $this->userService->checkRightsOnBlog($user, $b);
         $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
         return response()->json($b);
     }
@@ -119,7 +230,6 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
         alert()->success('Successful','Blog successfully deleted');
         $del = Blog::find($id);
         $del->delete();
@@ -127,14 +237,39 @@ class BlogController extends Controller
         return redirect()->to('/');
     }
 
+    /**
+     * @SWG\DELETE(
+     *   path="/api/blogs/{id}",
+     *   summary="[OWNER OR ADMIN] - delete a blog",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="blog id",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *   @SWG\Response(response=200, description="the blog is deleted from db"),
+     *   @SWG\Response(response=404, description="blog not found"),
+     *   @SWG\Response(response=401, description="unauthorized")
+     * )
+     *
+     */
     public function destroy_api($id){
         $blog = $this->blogService->getBlogById_api($id);
+        $user = $this->userService->getAPIUser();
+        $this->userService->checkRightsOnBlog($user, $blog);
         $blog->delete();
         return response()->json($blog);
     }
 
     public function getThreeLatestPosts(){
-        // return 'test';
         $posts = $this->blogService->getLatestPost(3);
         return $posts;
     }

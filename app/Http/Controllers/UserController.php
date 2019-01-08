@@ -15,6 +15,98 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
+
+    /**
+     * @SWG\GET(
+     *   path="/api/users",
+     *   summary="[PUBLIC] Get all users",
+     *   @SWG\Response(response=200, description="all users are retrieved")
+     * )
+     *
+     */
+    public function index_api(){
+        return response()->json(\App\User::all());
+    }
+
+    /**
+     * @SWG\PUT(
+     *   path="/api/users/{id}",
+     *   summary="[OWNER OR ADMIN] - update a user",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="user id",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token",
+     *     required=true,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="title",
+     *     in="query",
+     *     description="new title",
+     *     required=false,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="content",
+     *     in="query",
+     *     description="new content",
+     *     required=false,
+     *     type="string"
+     *    ),
+     *  @SWG\Parameter(
+     *     name="countries",
+     *     in="query",
+     *     description="new country",
+     *     required=false,
+     *     enum={"South America", "North America", "Europe", "Middle East", "Asia"},
+     *     type="string"
+     *    ),
+     *   @SWG\Response(response=200, description="the blog is retrieved"),
+     *   @SWG\Response(response=404, description="blog not found"),
+     *   @SWG\Response(response=401, description="unauthorized")
+     * )
+     *
+     */
+    public function update_api(Request $request, $id)
+    {
+        $user = $this->userService->getAPIUser();
+        if (!$user->isAdmin() && $user->id !== $id)
+            throw new BadCredentialsApi();
+
+        $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($b);
+    }
+
+    /**
+     * @SWG\POST(
+     *   path="/api/login",
+     *   summary="[PUBLIC] Retrieve a JWT token",
+     *   @SWG\Parameter(
+     *     name="email",
+     *     in="query",
+     *     description="login email",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="password",
+     *     in="query",
+     *     description="unencrypted password (should be used over https)",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="token has been retrieved"),
+     *   @SWG\Response(response=401, description="bad credentials")
+     * )
+     *
+     */
     public function login_api(Request $request){
         $this->validate($request, [
             'email' => 'required',
@@ -30,6 +122,22 @@ class UserController extends Controller
         ], 200);
     }
 
+    /**
+     * @SWG\GET(
+     *   path="/api/self",
+     *   summary="[USER] Return the user associated with the given JWT (headers)",
+     *   @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token_here",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="user is retrieved"),
+     *   @SWG\Response(response=401, description="the token is not valid")
+     * )
+     *
+     */
     public function self_api(Request $request){
         $current_user = $this->userService->getAPIUser();
         return $current_user;
