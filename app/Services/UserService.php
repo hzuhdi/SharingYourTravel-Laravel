@@ -33,7 +33,7 @@ class UserService {
         if ($image){
             if ($user->image)
                 $this->imageService->removeExistingImage($user->image);
-            $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
+            $filename = $this->imageService->saveImage($image);
             $user->image = $filename;
         }
         $user->update();
