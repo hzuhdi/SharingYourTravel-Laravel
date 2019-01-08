@@ -8,6 +8,7 @@ use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Exceptions\BadCredentialsApi;
 
 class UserController extends Controller
 {
@@ -20,10 +21,10 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-        
+
         $token = JWTAuth::attempt(['email' => $request->email, 'password' => $request->password]);
         if (!$token) {
-            return response()->json(['message' => "Bad Credentials",], 401);
+            throw new BadCredentialsApi();
         }
         return response()->json([
                 'token' => $token
@@ -31,11 +32,7 @@ class UserController extends Controller
     }
 
     public function self_api(Request $request){
-        try {
-            $current_user = JWTAuth::parseToken()->authenticate();
-        } catch (JWTException $e) {
-            return response()->json(['message' => "Bad Credentials"], 401);
-        }
+        $current_user = $this->userService->getAPIUser();
         return $current_user;
     }
 

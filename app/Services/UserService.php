@@ -2,6 +2,9 @@
 namespace App\Services;
 
 use App\User;
+use App\Exceptions\BadCredentialsApi;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserService {
 
@@ -10,6 +13,15 @@ class UserService {
         $this->imageService = $imageService;
     }
 
+    // return the user associated with the given JWT and throw associated error
+    public function getAPIUser(){
+        try {
+            $current_user = JWTAuth::parseToken()->authenticate();
+        } catch (JWTException $e) {
+            throw new BadCredentialsApi();
+        }
+        return $current_user;
+    }
 
     // update a user
     public function update($user, $email, $name, $password, $bio, $image){

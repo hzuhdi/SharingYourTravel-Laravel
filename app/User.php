@@ -16,6 +16,11 @@ class User extends Authenticable implements JWT
     protected $fillable = ['email', 'name', 'password', 'bio', 'type', 'image'];
     protected $hidden = ['password', 'type', 'remember_token'];
 
+	public function getId()
+	{
+  		return $this->id;
+	}
+
     public function isAdmin(){
     	return $this->type === self::ADMIN_TYPE;
     }

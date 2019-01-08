@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
 use App\Services\BlogService;
+use App\Services\UserService;
 use Alert;
 use PDF;
 
 class BlogController extends Controller
 {
 
-    public function __construct(BlogService $blogService)
+    public function __construct(BlogService $blogService, UserService $userService)
     {
         $this->blogService = $blogService;
+        $this->userService = $userService;
     }
     public function index_api(){
         return response()->json(Blog::all());
@@ -32,7 +34,6 @@ class BlogController extends Controller
             'countries' => 'required'
         ]);
 
-        // TODO see if it's really necessary (should use auth middleware instead?)
         if (!$user = Auth::user())
             return view("auth.login");
 
@@ -48,8 +49,9 @@ class BlogController extends Controller
             'content' => 'required',
             'countries' => 'required'
         ]);
-        // TODO when auth is working
-        //$blog = $this->blogService->create();
+        $user = $this->userService->getAPIUser($request);
+        $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($b);
     }
 
     /**

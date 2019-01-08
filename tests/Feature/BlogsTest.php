@@ -5,11 +5,16 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JWTAuth;
 
 class BlogsTest extends TestCase
 {
 
     use RefreshDatabase;
+    use WithFaker;
+
+    const MOCK_EMAIL = "bob@email.com";
+    const MOCK_PASSWORD = "thisisapassword";
     /**
      * A basic test example.
      *
@@ -103,7 +108,27 @@ class BlogsTest extends TestCase
         ]);
     }
 
-    // public function test_should_create_a_blog(){
-    //     //TODO
-    // }
+    public function test_should_create_a_blog(){
+        $payload = [
+            'title' => $this->faker->sentence(6),
+            'content' => $this->faker->text,
+            'countries' => $this->faker->randomElement(['South America', 'North America', 'Europe', 'Middle East', 'Asia'])
+        ];
+
+        // it should not work: no token provided
+        $response = $this->json('POST', '/api/blogs/', $payload);
+        $response->assertStatus(401);
+
+        // creating a user to post the article with
+        $user = factory(\App\User::class)->create([
+            'email' => self::MOCK_EMAIL,
+            'password' => bcrypt(self::MOCK_PASSWORD),
+        ]);
+        $token = JWTAuth::attempt(['email' => self::MOCK_EMAIL, 'password' => self::MOCK_PASSWORD]);
+
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+        ])->json('POST', '/api/blogs/', $payload);
+        $response->assertStatus(200)->assertJson($payload)->assertJson(['user_id' => $user->getId()]);
+    }
 }
