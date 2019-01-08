@@ -15,6 +15,30 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
+
+    /**
+     * @SWG\POST(
+     *   path="/api/login",
+     *   summary="[PUBLIC] Retrieve a JWT token",
+     *   @SWG\Parameter(
+     *     name="email",
+     *     in="query",
+     *     description="login email",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="password",
+     *     in="query",
+     *     description="unencrypted password (should be used over https)",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="token has been retrieved"),
+     *   @SWG\Response(response=401, description="bad credentials")
+     * )
+     *
+     */
     public function login_api(Request $request){
         $this->validate($request, [
             'email' => 'required',
@@ -30,6 +54,22 @@ class UserController extends Controller
         ], 200);
     }
 
+    /**
+     * @SWG\GET(
+     *   path="/api/self",
+     *   summary="[USER] Return the user associated with the given JWT (headers)",
+     *   @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="Bearer your_token_here",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="user is retrieved"),
+     *   @SWG\Response(response=401, description="the token is not valid")
+     * )
+     *
+     */
     public function self_api(Request $request){
         $current_user = $this->userService->getAPIUser();
         return $current_user;
