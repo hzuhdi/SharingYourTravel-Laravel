@@ -7,10 +7,10 @@
             @foreach($b->comments as $c)           
                 <li class="comment">
                   <div class="vcard">
-                    @if (!is_null($b->user->image))
-                    <img src="/images/{{ $b->user->image }}" alt="Image placeholder">
-                    @else
+                    @if (is_null($c->user->image))
                     <img src="/images/profile.png" alt="Image placeholder">
+                    @else
+                    <img src="/images/{{ $c->user->image }}" alt="Image placeholder">                    
                     @endif
                   </div>
                   <div class="comment-body">

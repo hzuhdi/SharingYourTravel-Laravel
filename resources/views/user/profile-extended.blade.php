@@ -44,11 +44,11 @@
                                     <input type="file" id="inputimage" name="image" class="validate" style="margin-top:5px;" value="{{ $user->image }}"/>
                                 </div>
                                 <label for="name">Full Name</label>
-                                <input type="text" id="name" class="form-control" name="name" value="{{ $user->name}}">
+                                <input type="text" id="name" class="form-control" name="name" value="{{ $user->name}}" style="text-align: center;">
                                 <label for="name">Email</label>
-                                <input type="email" id="email" class="form-control" name="email" value="{{ $user->email}}">
+                                <input type="email" id="email" class="form-control" name="email" value="{{ $user->email}}" style="text-align: center;">
                                 <label for="name">Password</label>
-                                <input type="Password" id="password" class="form-control" name="password" placeholder="enter new password" value="">
+                                <input type="Password" id="password" class="form-control" name="password" placeholder="enter new password" value="" style="text-align: center;">
                                 <label for="content">Bio <strong>*max 200 words</strong></label>
                                 <textarea name="bio" id="bio" class="form-control " cols="30" rows="8">{{$user->bio}}</textarea>
 
