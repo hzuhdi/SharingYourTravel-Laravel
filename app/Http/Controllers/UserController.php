@@ -6,15 +6,34 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
-
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Exceptions\BadCredentialsApi;
 
 class UserController extends Controller
 {
     public function __construct(UserService $userService)
     {
-        $this->middleware('auth');    
         $this->userService = $userService;
-    
+    }
+    public function login_api(Request $request){
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $token = JWTAuth::attempt(['email' => $request->email, 'password' => $request->password]);
+        if (!$token) {
+            throw new BadCredentialsApi();
+        }
+        return response()->json([
+                'token' => $token
+        ], 200);
+    }
+
+    public function self_api(Request $request){
+        $current_user = $this->userService->getAPIUser();
+        return $current_user;
     }
 
     // used to logout of the application

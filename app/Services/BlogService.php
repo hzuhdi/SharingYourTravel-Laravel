@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Blog;
+use App\Exceptions\NotFoundApi;
 
 class BlogService {
 
@@ -14,7 +15,7 @@ class BlogService {
     public function create($user, $title, $content, $countries, $image){
         $b = new Blog();
         $b->title = $title;
-        
+
         //content will be changed into summernote
         //$b->content = $content;
  /*       $detail=$request->summernoteInput;
@@ -50,24 +51,24 @@ class BlogService {
         //
 
         //TO-DO fix it
-            
+
         /*$dom = new \domdocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
- 
+
         $images = $dom->getelementsbytagname('img');
         foreach($images as $k => $img){
 
             $data = $img->getattribute('src');
- 
+
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
- 
+
             $data = base64_decode($data);
             $image_name= time().$k.'.jpg';
             $path = public_path() .'/'. $image_name;
- 
+
             file_put_contents($path, $data);
- 
+
             $img->removeattribute('src');
             $img->setattribute('src', $image_name);
         }
@@ -104,5 +105,14 @@ class BlogService {
 
     public function getBlogsByCountry($country){
         return Blog::where('countries', $country)->get();
+    }
+
+    // throws the appropriate exceptions for API
+    public function getBlogById_api($id){
+        $blog = Blog::find($id);
+        if ($blog)
+            return $blog;
+        else
+            throw new NotFoundApi($id, 'blog');
     }
 }

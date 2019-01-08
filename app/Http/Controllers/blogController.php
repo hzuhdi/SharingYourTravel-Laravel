@@ -6,37 +6,21 @@ use Illuminate\Http\Request;
 use App\Blog;
 use Auth;
 use App\Services\BlogService;
+use App\Services\UserService;
 use Alert;
 use PDF;
 
 class BlogController extends Controller
 {
 
-    public function __construct(BlogService $blogService)
+    public function __construct(BlogService $blogService, UserService $userService)
     {
         $this->blogService = $blogService;
+        $this->userService = $userService;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index_api(){
+        return response()->json(Blog::all());
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +34,6 @@ class BlogController extends Controller
             'countries' => 'required'
         ]);
 
-        // TODO see if it's really necessary (should use auth middleware instead?)
         if (!$user = Auth::user())
             return view("auth.login");
 
@@ -58,6 +41,17 @@ class BlogController extends Controller
         Alert::success('Successful', 'Blog Created Successfully');
         return redirect()->action('MyController@show', $b->id);
 
+    }
+
+    public function create_api(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'countries' => 'required'
+        ]);
+        $user = $this->userService->getAPIUser($request);
+        $b = $this->blogService->create($user, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($b);
     }
 
     /**
@@ -70,6 +64,12 @@ class BlogController extends Controller
     {
         $b = Blog::find($id);
         return view('about')->with('b', $b);
+    }
+
+    public function show_api($id)
+    {
+        $b = $this->blogService->getBlogById_api($id);
+        return $b;
     }
 
     /**
@@ -103,6 +103,13 @@ class BlogController extends Controller
         return redirect()->action('MyController@show', $update->id);
     }
 
+    public function update_api(Request $request, $id)
+    {
+        $b = $this->blogService->getBlogById_api($id);
+        $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
+        return response()->json($b);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -117,6 +124,12 @@ class BlogController extends Controller
         $del->delete();
 
         return redirect()->to('/');
+    }
+
+    public function destroy_api($id){
+        $blog = $this->blogService->getBlogById_api($id);
+        $blog->delete();
+        return response()->json($blog);
     }
 
     public function getThreeLatestPosts(){
