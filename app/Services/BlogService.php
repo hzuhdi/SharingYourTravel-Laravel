@@ -76,7 +76,7 @@ class BlogService {
         $b->content = $content;
         $b->countries = $countries;
         if ($image){
-            $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
+            $filename = $this->imageService->saveImage($image);
             $b->image = $filename;
         }
         $user->blogs()->save($b);
@@ -91,7 +91,7 @@ class BlogService {
         if ($image){
             if ($blog->image)
                 $this->imageService->removeExistingImage($blog->image);
-            $filename = $this->imageService->getFileNameFromRequestAndSaveIt($image);
+            $filename = $this->imageService->saveImage($image);
             $blog->image = $filename;
         }
         $blog->countries = $countries ? $countries : $blog->countries;
