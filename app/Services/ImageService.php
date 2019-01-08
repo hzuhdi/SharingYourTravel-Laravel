@@ -6,7 +6,8 @@ namespace App\Services;
 
 class ImageService {
 
-    public function getFileNameFromRequestAndSaveIt($file_from_request){
+    // returns a string (filename)
+    public function saveImage($file_from_request){
         /*$filename = $file_from_request->getClientOriginalName();
         $image_resize = Intervention\Image\ImageManagerStatic::make($file_from_request->getRealPath());
         $image_resize->resize(300, 300);
@@ -17,6 +18,7 @@ class ImageService {
 
 
         $filename = $file_from_request->getClientOriginalName();
+        $filename = time() . $filename;
         $file_from_request->move(public_path()."/images/", $filename);
         //$file_from_request->resize(300, 300);
         return $filename;

@@ -12,21 +12,24 @@ class ImageServiceTest extends TestCase
     public function setUp() {
         parent::setUp();
         $this->imageService = $this->app->make('App\Services\ImageService');
-        $this->mock_image_full_path = public_path() . '/images/' . self::MOCK_IMAGE_NAME;
     }
 
-    public function test_should_get_filename_from_file_and_save_it()
+    protected function publify_filename($filename){
+        return public_path().'/images/'.$filename;
+    }
+
+    public function test_should_save_image()
     {
        $mock_image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME);
-       $filename = $this->imageService->getFileNameFromRequestAndSaveIt($mock_image);
+       $filename = $this->imageService->saveImage($mock_image);
 
        // testing that it return the good filename
-       $this->assertSame($filename, self::MOCK_IMAGE_NAME);
+       $this->assertSame($filename, time().self::MOCK_IMAGE_NAME);
 
        // testing that the file is saved in the good dir
-       $this->assertFileExists($this->mock_image_full_path);
+       $this->assertFileExists($this->publify_filename($filename));
 
        // deleting the file now that tests are over
-       unlink($this->mock_image_full_path);
+       unlink($this->publify_filename($filename));
     }
 }
