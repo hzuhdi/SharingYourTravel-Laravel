@@ -12,8 +12,10 @@
     or, if composer is not installed globally on your machine:
     ```php path/to/your/composer.phar install```
 - copy file ```.env.example``` in a new ```.env``` file
-- generate a key:  ```php artistan key:generate```
+- generate a key:  ```php artisan key:generate```
 - replace the values of the database parameters in the newly created .env file with your local values
+- generate a jwt key using ```php artisan jwt:secret```
+- copy the newly generate value for ```JWT_SECRET``` from ```.env``` to ```.env.testing``` file
 
 ### run the server
 type  ```php artisan serve``` <br/>

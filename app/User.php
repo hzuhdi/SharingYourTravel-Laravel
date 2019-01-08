@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticable;
+use Tymon\JWTAuth\Contracts\JWTSubject as JWT;
 
-class User extends Authenticable
+class User extends Authenticable implements JWT
 {
 
 	const ADMIN_TYPE = 'admin';
@@ -27,4 +28,13 @@ class User extends Authenticable
     public function comments(){
         return $this->hasMany('App\Comment');
     }
+
+
+		public function getJWTIdentifier(){
+   		return $this->getKey();
+		}
+
+		public function getJWTCustomClaims(){
+   		return [];
+		}
 }
