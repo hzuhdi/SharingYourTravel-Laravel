@@ -24,4 +24,6 @@ Route::group([
 
   Route::post('/login', 'UserController@login_api');
   Route::get('/self', 'UserController@self_api');
+  Route::get('/users', 'UserController@index_api');
+  Route::put('/users/{id}', "UserController@update_api");
 });

@@ -71,7 +71,38 @@ class BlogsTest extends TestCase
         ]);
 
         $title = "BONJOUR";
+        // with no user
         $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response->assertStatus(401);
+
+        // with non owner user
+        $random_user = factory(\App\User::class)->create();
+        $token = JWTAuth::fromUser($random_user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response->assertStatus(401);
+
+        // with owner
+        $token = JWTAuth::fromUser($blog->user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
+        $response = $this->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title . $title]);
+        $response->assertStatus(200)->assertJson([
+                'title' => $title . $title
+        ]);
+
+        $this->assertDatabaseHas('blogs', [
+            'title' => $title . $title
+        ]);
+
+        // with admin
+        $admin = factory(\App\User::class)->create(['type' => 'admin']);
+        $token = JWTAuth::fromUser($admin);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+            ->json('PUT', '/api/blogs/'.$blog->id, ['title' => $title]);
         $response->assertStatus(200)->assertJson([
                 'title' => $title
         ]);
@@ -98,7 +129,55 @@ class BlogsTest extends TestCase
             'id' => $blog->id
         ]);
 
+        // with no user
         $response = $this->json('DELETE', '/api/blogs/'.$blog->id);
+        $response->assertStatus(401);
+        $this->assertDatabaseHas('blogs', [
+            'id' => $blog->id
+        ]);
+
+        // with non owner
+        $random_user = factory(\App\User::class)->create();
+        $token = JWTAuth::fromUser($random_user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+        ->json('DELETE', '/api/blogs/'.$blog->id);
+        $response->assertStatus(401);
+        $this->assertDatabaseHas('blogs', [
+            'id' => $blog->id
+        ]);
+
+        // with owner
+        $token = JWTAuth::fromUser($blog->user);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+        ->json('DELETE', '/api/blogs/'.$blog->id);
+        $response->assertStatus(200)->assertJson([
+                'id' => $blog->id,
+        ]);
+
+        $this->assertDatabaseMissing('blogs', [
+            'id' => $blog->id
+        ]);
+
+        // with admin
+        $blog = factory(\App\Blog::class)->create([
+            'user_id' => function() {
+                // create a User, because a blog need a user to exist
+                $user = factory(\App\User::class)->create();
+                return $user->id;
+            }
+        ]);
+
+        $this->assertDatabaseHas('blogs', [
+            'id' => $blog->id
+        ]);
+
+        $admin = factory(\App\User::class)->create(['type' => 'admin']);
+        $token = JWTAuth::fromUser($admin);
+        $response = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token])
+        ->json('DELETE', '/api/blogs/'.$blog->id);
         $response->assertStatus(200)->assertJson([
                 'id' => $blog->id,
         ]);

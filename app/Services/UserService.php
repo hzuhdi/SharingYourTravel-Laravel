@@ -45,4 +45,11 @@ class UserService {
         $user->update();
         return $user;
     }
+
+    // throw the associated error if the user has no rights on this blog
+    public function checkRightsOnBlog($user, $blog){
+        $isOwner = $blog->user->id === $user->id;
+        if (!$isOwner && !$user->isAdmin())
+            throw new BadCredentialsApi();
+    }
 }
