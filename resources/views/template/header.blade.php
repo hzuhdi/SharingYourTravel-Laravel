@@ -59,9 +59,9 @@
                 </div>
               </li>
 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link" href="blogs.html">Stories</a>
-              </li>
+              </li> --}}
 
               <li class="nav-item">
                 <a class="nav-link" href="about">About</a>
