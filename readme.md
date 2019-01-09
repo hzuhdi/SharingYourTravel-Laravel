@@ -17,6 +17,8 @@
 - generate a jwt key using ```php artisan jwt:secret```
 - copy the newly generate value for ```JWT_SECRET``` from ```.env``` to ```.env.testing``` file
 
+in order to make the app working better, you'll need to add a ```default.png``` and ```watermark2.png``` into the ```public/images/```folder.
+
 ### run the server
 type  ```php artisan serve``` <br/>
 the webserver is now running in development mode on the port 8000 of your local machine!<br>
