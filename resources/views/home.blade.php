@@ -3,16 +3,15 @@
 
 
 <!-- Part for carousell -->
-      <section class="site-section py-sm" style="margin-top: 10px;">
+<!--       <section class="site-section py-sm" style="margin-top: 10px;">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
 
             <div class="owl-carousel owl-theme home-slider">
               
-              <?php $count = 0; ?>
               @foreach($blogs as $b)
-              <?php if($count == 3) break; ?>
+                @if($loop->index < 4)
                     <div>
                         @if ($b->image)
                             <a href="{{ url('read', $b->id) }}" class="a-block d-flex align-items-center height-lg" style="background-image: url('{{ asset('images/'.$b->image)  }}'); ">
@@ -31,24 +30,23 @@
                   </div>
                 </a>
               </div>
-              <?php $count++; ?>
+
+              @endif
+
               @endforeach
             </div>
             
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 <!-- End Carousel -->
-
-      <div class="text-center" style="font-size: 25px;">
-        <br />
-        <strong><i>"All you have to do is sharing and caring"</i></strong> - John Lennon
-        <br />
-      </div>
 
 
 <!-- Blog card -->
+<img src="/images/logo.png" class="element-animate" style="width:auto; height: 200px; text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 5px;">
+
+
 @if(count($blogs) > 0)
 
 <section class="site-section py-sm">
@@ -91,6 +89,8 @@
 
 
 @endif
+
+
 
 <!-- End of blogcard -->
 

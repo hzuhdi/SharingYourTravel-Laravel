@@ -78,7 +78,7 @@
                   @else
                     <p>{{ $b->user->bio }}</p>
                   @endif
-                    <p><a href="#" class="btn btn-primary btn-sm">Subscribe</a></p>
+                    <p><a href="/edit-profile" class="btn btn-primary btn-sm">Edit Profile</a></p>
                     <p class="social">
                       <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                       <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>

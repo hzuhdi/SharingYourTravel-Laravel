@@ -6,7 +6,7 @@
            <img src="{{ asset('images/default.png')}}" alt="Default image">
       @endif
     <div class="blog-content-body">
-      <div class="post-meta">
+      <div class="post-meta" style="height: 70px; margin: 1px;">
         <span class="category">{{$blog->countries}}</span>
         <span class="mr-2">{{$blog->created_at->format('d.m.Y')}}</span> &bullet;
         <span class="ml-2"><span class="fa fa-comments"></span> {{$blog->comments->count()}}</span>
