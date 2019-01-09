@@ -1,4 +1,4 @@
-# WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/) & Hafizh Ahmad Zuhdi
+# WEB3 PROJECT - [HENTGES Thibault](https://thentges.github.io/) & [Hafizh Ahmad Zuhdi](https://github.com/hafizhahmadzuhdi)
 ## LARAVEL VERSION : 5.7.13
 *as we can't set up some continous testing on this GitLab, you should always run tests before pushing to the master branch <br> see [testing](#testing) part of this readme*
 
@@ -24,6 +24,13 @@ the webserver is now running in development mode on the port 8000 of your local 
 
 ### useful commands
 - ```php artisan migrate:fresh --seed``` will drop current database, create the updated schema, and populate it with random data to work with
+
+### access admin
+- You need an exist default user before
+- type ```php artisan tinker```
+- then type the command ```use App\User;```
+- last part you need to change the type by using ```User::where('email', 'youruser@mail.com')->update(['type' => 'admin']);```
+- So you now have an admin and can login to admin panel
 
 ### API usage
 You can find the documentation of the API [here](http://127.0.0.1:8000/api/documentation)
