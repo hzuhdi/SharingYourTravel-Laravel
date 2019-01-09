@@ -47,29 +47,35 @@ class UserController extends Controller
      *     type="string"
      *    ),
      *  @SWG\Parameter(
-     *     name="title",
+     *     name="email",
      *     in="query",
-     *     description="new title",
+     *     description="new email",
      *     required=false,
      *     type="string"
      *    ),
      *  @SWG\Parameter(
-     *     name="content",
+     *     name="name",
      *     in="query",
-     *     description="new content",
+     *     description="new name",
      *     required=false,
      *     type="string"
      *    ),
      *  @SWG\Parameter(
-     *     name="countries",
+     *     name="password",
      *     in="query",
-     *     description="new country",
+     *     description="new password",
      *     required=false,
-     *     enum={"South America", "North America", "Europe", "Middle East", "Asia"},
      *     type="string"
      *    ),
-     *   @SWG\Response(response=200, description="the blog is retrieved"),
-     *   @SWG\Response(response=404, description="blog not found"),
+     *  @SWG\Parameter(
+     *     name="bio",
+     *     in="query",
+     *     description="new bio",
+     *     required=false,
+     *     type="string"
+     *    ),
+     *   @SWG\Response(response=200, description="the user is updated"),
+     *   @SWG\Response(response=404, description="user not found"),
      *   @SWG\Response(response=401, description="unauthorized")
      * )
      *
@@ -80,8 +86,8 @@ class UserController extends Controller
         if (!$user->isAdmin() && $user->id !== $id)
             throw new BadCredentialsApi();
 
-        $b = $this->blogService->update($b, $request['title'], $request['content'], $request['countries'], $request->file('image'));
-        return response()->json($b);
+        $user = $this->userService->update($user, $request['email'], $request['name'], $request['password'], $request['bio'], $request->file('image'));
+        return response()->json($user);
     }
 
     /**
