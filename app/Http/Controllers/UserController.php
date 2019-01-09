@@ -83,7 +83,7 @@ class UserController extends Controller
     public function update_api(Request $request, $id)
     {
         $user = $this->userService->getAPIUser();
-        if (!$user->isAdmin() && $user->id !== $id)
+        if (!$user->isAdmin() && $user->id != $id)
             throw new BadCredentialsApi();
 
         $user = $this->userService->update($user, $request['email'], $request['name'], $request['password'], $request['bio'], $request->file('image'));
