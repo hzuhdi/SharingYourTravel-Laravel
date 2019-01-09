@@ -39,6 +39,7 @@ class ImageService {
         $myImage->insert($watermark, 'center');
 
         $filename = $file_from_request->getClientOriginalName();
+        $filename = time().$filename;
         $myImage->save(public_path()."/images/".$filename);
 
         //$myImage->save($originalPath.time().$file_from_request->getClientOriginalName());

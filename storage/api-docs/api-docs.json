@@ -35,40 +35,40 @@
                         "type": "string"
                     },
                     {
-                        "name": "title",
+                        "name": "email",
                         "in": "query",
-                        "description": "new title",
+                        "description": "new email",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "content",
+                        "name": "name",
                         "in": "query",
-                        "description": "new content",
+                        "description": "new name",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "countries",
+                        "name": "password",
                         "in": "query",
-                        "description": "new country",
+                        "description": "new password",
                         "required": false,
-                        "type": "string",
-                        "enum": [
-                            "South America",
-                            "North America",
-                            "Europe",
-                            "Middle East",
-                            "Asia"
-                        ]
+                        "type": "string"
+                    },
+                    {
+                        "name": "bio",
+                        "in": "query",
+                        "description": "new bio",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "the blog is retrieved"
+                        "description": "the user is updated"
                     },
                     "404": {
-                        "description": "blog not found"
+                        "description": "user not found"
                     },
                     "401": {
                         "description": "unauthorized"

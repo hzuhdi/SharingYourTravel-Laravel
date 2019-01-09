@@ -84,18 +84,19 @@ class BlogServiceTest extends TestCase
     }
 
     public function test_should_delete_previous_image_from_server(){
+        // making sure the image is present on the server
+        $mock_image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME);
+        $filename = $this->imageService->saveImage($mock_image);
+
         // creating a blog in db to work with, with an image
         $blog = factory(\App\Blog::class)->create([
-            'image' => time().self::MOCK_IMAGE_NAME,
+            'image' => $filename,
             'user_id' => function() {
                 // create a User, because a blog need a user to exist
                 $user = factory(\App\User::class)->create();
                 return $user->id;
             }
         ]);
-        // making sure the image is present on the server
-        $mock_image = UploadedFile::fake()->image(self::MOCK_IMAGE_NAME);
-        $filename = $this->imageService->saveImage($mock_image);
         $this->assertFileExists($this->publify_filename($blog->image));
 
         // creating a new image, and updating the blog with it
